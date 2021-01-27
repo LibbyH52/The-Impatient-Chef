@@ -9,9 +9,66 @@
 <body>
     <header class="header">
         <h1 class="main-heading">Recipe Finder</h1>
+        <form action="" class="search-recipes">
+            <div class="form-group">
+                <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipes">
+            </div>
+        </form>
     </header>
     <main class="main-container">
-        
+        <div class="sidebar">
+            <form action="#" class="search-filters">
+                <h3 calss="filter-heading">Meal Type</h3>
+                <div class="form-group radio-btns">
+                    <input type="radio" name="meal-type" id="appetiser" value="appetiser">
+                    <label for="appetiser">Appetiser</label>
+                    <input type="radio" name="meal-type" id="breakfast" value="breakfast">
+                    <label for="breakfast">Breakfast</label>
+                    <input type="radio" name="meal-type" id="cakes" value="cakes">
+                    <label for="cakes">Cakes</label>
+                    <input type="radio" name="meal-type" id="cookies" value="cookies">
+                    <label for="cookies">Cookies</label>
+                    <input type="radio" name="meal-type" id="desserts" value="desserts">
+                    <label for="desserts">Desserts</label>
+                    <input type="radio" name="meal-type" id="dinner" value="dinner">
+                    <label for="dinner">Dinner</label>
+                </div>
+                <h3 calss="filter-heading">Special Occasions</h3>
+                <div class="form-group">
+                    <input type="radio" name="meal-type" id="Birthday" value="Birthday">
+                    <label for="Birthday">Birthday</label>
+                    <input type="radio" name="meal-type" id="Christmas" value="Christmas">
+                    <label for="Christmas">Christmas</label>
+                    <input type="radio" name="meal-type" id="Easter" value="Easter">
+                    <label for="Easter">Easter</label>
+                    <input type="radio" name="meal-type" id="Halloween" value="Halloween">
+                    <label for="Halloween">Halloween</label>
+                    <input type="radio" name="meal-type" id="Party Food" value="Party Food">
+                    <label for="Party Food">Party Food</label>
+                </div>
+                <h3 calss="filter-heading">Cuisine</h3>
+                <div class="form-group">
+                    <input type="checkbox" id="cuisine1" name="cuisine1" value="American">
+                    <label for="cuisine1"> American</label>
+                    <input type="checkbox" id="cuisine2" name="cuisine2" value="Chinese">
+                    <label for="cuisine2"> Chinese</label>
+                    <input type="checkbox" id="cuisine3" name="cuisine3" value="French">
+                    <label for="cuisine3"> French</label>
+                    <input type="checkbox" id="cuisine4" name="cuisine4" value="Greek">
+                    <label for="cuisine4"> Greek</label>
+                    <input type="checkbox" id="cuisine5" name="cuisine5" value="Indian">
+                    <label for="cuisine5"> Indian</label>
+                    <input type="checkbox" id="cuisine6" name="cuisine6" value="Italian">
+                    <label for="cuisine6"> Italian</label>
+                    <input type="checkbox" id="cuisine7" name="cuisine7" value="Japanese">
+                    <label for="cuisine7"> Japanese</label>
+                    <input type="checkbox" id="cuisine8" name="cuisine8" value="Mexican">
+                    <label for="cuisine8"> Mexican</label>
+                    <input type="checkbox" id="cuisine9" name="cuisine9" value="Thai">
+                    <label for="cuisine9"> Thai</label>
+                </div>
+            </form>
+        </div>
     </main>
     <script src="recipes.js"></script>
     <script src="js/script.js"></script>  
