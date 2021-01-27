@@ -18,7 +18,7 @@ body{
 /***********************Heading Styles*/
 .main-heading {
     color: #f4f4f4;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 /************************Header Styles*/
@@ -27,27 +27,26 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 1rem;
 }
 
 .search-recipes{
-    flex: 0 0 45%;
-    margin: 1rem auto;
+    width: 70%;
 }
 
 input#recipe-search{
     border: none;
     border-radius: 1rem;
     margin: 0 auto;
-    padding: .75rem 1rem;
-    width: 75%;
+    padding: .5rem .75rem;
+    width: 100%;
     position: relative;
 }
 
 .icons{
     color: #f4f4f4;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
 }
 
@@ -58,20 +57,54 @@ input#recipe-search{
     border-radius: 1.5rem;
     cursor: pointer;
     position: absolute;
-    transform: translate(-2rem);
-    height: 2.5rem;
-    width: 2.5rem;
+    transform: translate(-1.75rem);
+    height: 2rem;
+    width: 2rem;
 }
 
 /************************************Media Queries*/
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 600px) {
+    .header{
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: .5rem;
+    }
+
+    .icons{
+        flex: 0 0 50%;
+        margin-top: 0;
+        text-align: right;
+    }
+
+    .search-recipes{
+        order: 3;
+        margin: 1rem auto;
+    }
+}
+
+@media screen and (min-width: 900px) {
     .main-heading {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .header{
         flex-direction: row;
-        align-items: space-between;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }  
+
+    .search-recipes{
+        order: 2;
+        flex: 0 0 40%;
     }
     
+    input#recipe-search{
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .icons{
+        flex: 0 0 auto;
+        order: 3;
+    }
 }
