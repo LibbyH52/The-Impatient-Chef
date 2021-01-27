@@ -1,57 +1,77 @@
+/*Colour Scheme
+    Green:   #45d9fd;
+    White: #f4f4f4;
+    Pink: #ee2560;
+    Navy:  #08182b;
+*/
+
 * {
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-size: 62.5%; /*10px on larger screens*/
+body{
+    font-size: 62.5%; /*10px on large screen sizes*/
+    padding: 1rem 2rem;
 }
 
-.nav-list{
-    display: flex;
+/***********************Heading Styles*/
+.main-heading {
+    color: #f4f4f4;
+    font-size: 2rem;
 }
 
-.nav-item{
-    list-style: none;
-    font-size: 1.5rem;
-    font-variant: small-caps;
-    padding: 1rem;
-}
-
-.header {
-    background: url("../img/menu.jpg") center center no-repeat;
-    height: 50vh;
-}
-
-.main {
-    padding: 2rem;
-    margin: 0 auto;
-    width: 90%;
-}
-
-.recipe-container{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-}
-
-.recipe-card {
+/************************Header Styles*/
+.header{
+    background: #08182b;
     display: flex;
     flex-direction: column;
-    border: 1px solid #444;
-    margin: 1rem auto;
+    align-items: center;
+    justify-content: center;
     padding: 1rem;
-    height: 100px;
-    height: min-content;  
 }
 
-.recipe-img{
-    background: url('../img/blueberries.jpg') center center no-repeat;
-    height: 17rem;
-    width: 17rem;
+.search-recipes{
+    flex: 0 0 45%;
+    margin: 1rem auto;
 }
 
-.meal-type{
-    font-size: 1.75rem;
-    text-align: center;
+input#recipe-search{
+    border: none;
+    border-radius: 1rem;
+    margin: 0 auto;
+    padding: .75rem 1rem;
+    width: 75%;
+    position: relative;
+}
+
+.icons{
+    color: #f4f4f4;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+/************************Button Styles*/
+.search-btn{
+    background: #f4f4f4;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    transform: translate(-2rem);
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+/************************************Media Queries*/
+@media screen and (min-width: 992px) {
+    .main-heading {
+        font-size: 2rem;
+    }
+
+    .header{
+        flex-direction: row;
+        align-items: space-between;
+    }
+    
 }
