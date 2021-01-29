@@ -50,9 +50,13 @@ input#recipe-search{
 }
 
 .icons{
-    color: #f4f4f4;
     font-size: 1.5rem;
     margin-top: 1rem;
+}
+
+.icon a{
+    color: #f4f4f4;
+    cursor: pointer;
 }
 
 /************************Button Styles*/
@@ -69,6 +73,7 @@ input#recipe-search{
 
 .main-container{
     display: flex;
+    background: #f4f4f4;
 }
 
 /**************************************Side Filter*/
@@ -193,6 +198,6 @@ input#recipe-search{
     }
 
     .side-filter{
-        flex: 0 0 15%;
+        flex: 0 0 20%;
     }
 }
