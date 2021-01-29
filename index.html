@@ -10,15 +10,15 @@
 <body>
     <header class="header">
         <h1 class="main-heading">Recipe Finder</h1>
-        <form action="" class="search-recipes">
+        <form class="search-recipes">
             <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipes">
             <button class="search-btn"><span class="icon"><i class="fas fa-search"></i></span></button>
         </form>
         <div class="icons">
-            <span class="icon"><i class="fab fa-facebook-f"></i></span>
-            <span class="icon"><i class="fab fa-instagram"></i></span>
-            <span class="icon"><i class="fab fa-youtube"></i></span>
-            <span class="icon"><i class="fab fa-twitter"></i></span>
+            <span class="icon"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></span>
+            <span class="icon"><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></span>
+            <span class="icon"><a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></span>
+            <span class="icon"><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></span>
         </div>
     </header>
     <main class="main-container">
@@ -165,12 +165,13 @@
                         </label>
                     </div>
                 </div>
+                <button class="filter-btn">Filter recipes</button>
             </form>
         </div>
         <div class="recipe-container">
         </div>
     </main>
-    <script src="recipes.js"></script>
-    <script src="js/script.js"></script>  
+    <!-- <script src="static/js/recipes.js"></script> -->
+    <script src="static/js/script.js"></script>  
 </body>
 </html>
