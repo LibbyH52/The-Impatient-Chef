@@ -8,6 +8,7 @@ const filterBtn = document.querySelector('.filter-btn');
 
 
 const displayRecipes = (data) => {
+    recipeContainer.innerHTML = '';
     const recipeList = data.recipeList.results;
     console.log(recipeList);
     for(let i=0; i<recipeList.length; i++){
@@ -18,9 +19,9 @@ const displayRecipes = (data) => {
         recipeCard.appendChild(name);
         name.textContent = recipeList[i].title;
         recipeCard.classList.add("recipe-card");
-        let image = document.createElement('img');
-        recipeCard.appendChild(image);
-        image.src = recipeList[i].image;
+        let recipeImage = document.createElement('div');
+        recipeCard.style.backgroundImage = `url(${recipeList[i].image})`;
+        recipeCard.style.backgroundSize = 'cover';
     }
 }
 
@@ -41,22 +42,4 @@ searchForm.addEventListener("submit", e => {
         .then(data => displayRecipes(data))
         .catch(err => console.log(err));
 });
-
-// filterBtn.addEventListener("click", () => {
-//     for(let i=0; i<mealType.length; i++) {
-//         if(mealType[i].checked) {
-//             console.log(mealType[i].value);
-//         }
-//     }
-//     for(let i=0; i<occasionType.length; i++) {
-//         if(occasionType[i].checked) {
-//             console.log(occasionType[i].value);
-//         }
-//     }
-//     for(let i=0; i<cuisineType.length; i++) {
-//         if(cuisineType[i].checked) {
-//             console.log(cuisineType[i].value);
-//         }
-//     }
-// });
 
