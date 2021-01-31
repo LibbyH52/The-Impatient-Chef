@@ -66,14 +66,31 @@ input#recipe-search{
 }
 
 .recipe-card {
-    margin: 1rem 2rem;
-    padding: 3rem;
+    flex: 0 0 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    height: 15rem;
+    margin: 1rem auto;
+    padding: .25rem;
+    border: 2px solid #08182b;
+    box-sizing: border-box;
 }
 
-img{
-    display: block;
-    height: 100%;
+.recipe-heading{
+    align-self: flex-end;
+    background: linear-gradient(to left, rgba(244, 244, 244, .4),
+                                    rgba(244, 244, 244, .8), 
+                                        rgba(244, 244, 244, .4));
+    color: #08182b;
+    font-size: 1.25rem;
     width: 100%;
+    margin: 0 auto;
+    padding: .5rem 0;
+    text-align: center;
+    font-variant: small-caps;
+    font-weight: 600;
 }
 
 /************************Button Styles*/
@@ -90,6 +107,7 @@ img{
 
 .main-container{
     display: flex;
+    flex-direction: column;
     background: #f4f4f4;
 }
 
@@ -177,14 +195,30 @@ img{
         order: 3;
         margin: 1rem auto;
     }
+
+    .recipe-card{
+        flex: 0 0 60%;
+    }
+
+    .recipe-heading {
+        width: 90%;
+    }
 }
 
 @media screen and (min-width: 800px) {
+    .main-container{
+        flex-direction: row;
+    }
+
     .side-filter{
         display: flex;
         flex-direction: column;
         align-items: center;
         flex: 0 0 30%;
+    }
+
+    .recipe-card{
+        flex: 0 0 40%;
     }
 }
 
@@ -215,6 +249,11 @@ img{
     }
 
     .side-filter{
-        flex: 0 0 20%;
+        flex: 0 0 25%;
+    }
+
+    .recipe-card{
+        flex: 0 0 30%;
+        margin: 1rem;
     }
 }
