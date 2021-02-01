@@ -20,56 +20,56 @@
     <main class="main-container">
         <div class="side-filter">
             <form action="#" class="search-filters">
-                <div class="diet-type filter-group">
                     <div class="recipe-name">
                         <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipes">
                     </div>
                     <div class="ingredients">
-                        <input type="text" name="ingredients" class="ingredient-search" placeholder="Enter you list of ingredients separated by commas">
+                        <input type="text" name="ingredients" class="ingredient-search" placeholder="Please leave a space between each ingredient">
                     </div>
-                    <h3 class="filter-heading">Diet Type</h3>
-                    <div class="radio-input">
-                        <input type="radio" class="radio-option" name="diet-type" id="gluten-free" value="gluten-free">
-                        <label class="filter-label" for="gluten-free">
-                            <span class="radio-select"></span>
-                            Gluten Free 
-                        </label>
-                    </div>
-                   <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="diet-type" id="ketogenic" value="ketogenic">
-                        <label class="filter-label" for="ketogenic">
-                            <span class="radio-select"></span>
-                            Ketogenic 
-                        </label>
-                    </div>
-                   <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="diet-type" id="pescetarian" value="pescetarian">  
-                        <label class="filter-label" for="pescetarian">
-                            <span class="radio-select"></span> 
-                            Pescetarian
-                        </label>        
-                    </div>
-                   <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="diet-type" id="paleo" value="paleo">
-                        <label class="filter-label" for="paleo">
-                            <span class="radio-select"></span>
-                            Paleo
-                        </label>
-                    </div>
-                   <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="diet-type" id="vegan" value="vegan">
-                        <label class="filter-label" for="vegan">
-                            <span class="radio-select"></span>
-                            Vegan
-                        </label>
-                    </div>
-                    <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="diet-type" id="vegetarian" value="vegetarian">
-                        <label class="filter-label" for="vegetarian">
-                            <span class="radio-select"></span>
-                            Vegetarian
-                        </label>
-                    </div>
+                    <div class="diet-type filter-group">
+                        <h3 class="filter-heading">Diet Type</h3>
+                        <div class="radio-input">
+                            <input type="radio" class="radio-option" name="diet-type" id="gluten-free" value="gluten-free">
+                            <label class="filter-label" for="gluten-free">
+                                <span class="radio-select"></span>
+                                Gluten Free 
+                            </label>
+                        </div>
+                        <div class="radio-input"> 
+                            <input type="radio" class="radio-option" name="diet-type" id="ketogenic" value="ketogenic">
+                            <label class="filter-label" for="ketogenic">
+                                <span class="radio-select"></span>
+                                Ketogenic 
+                            </label>
+                        </div>
+                        <div class="radio-input"> 
+                            <input type="radio" class="radio-option" name="diet-type" id="pescetarian" value="pescetarian">  
+                            <label class="filter-label" for="pescetarian">
+                                <span class="radio-select"></span> 
+                                Pescetarian
+                            </label>        
+                        </div>
+                        <div class="radio-input"> 
+                            <input type="radio" class="radio-option" name="diet-type" id="paleo" value="paleo">
+                            <label class="filter-label" for="paleo">
+                                <span class="radio-select"></span>
+                                Paleo
+                            </label>
+                        </div>
+                        <div class="radio-input"> 
+                            <input type="radio" class="radio-option" name="diet-type" id="vegan" value="vegan">
+                            <label class="filter-label" for="vegan">
+                                <span class="radio-select"></span>
+                                Vegan
+                            </label>
+                        </div>
+                        <div class="radio-input"> 
+                            <input type="radio" class="radio-option" name="diet-type" id="vegetarian" value="vegetarian">
+                            <label class="filter-label" for="vegetarian">
+                                <span class="radio-select"></span>
+                                Vegetarian
+                            </label>
+                        </div>
                 </div>
                 <div class="meal-type filter-group">
                     <h3 class="filter-heading">Meal Type</h3>
@@ -129,8 +129,8 @@
                         </label>
                     </div>
                     <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="meal-type" id="snack" value="Snack">
-                        <label class="filter-label" for="Snack">
+                        <input type="radio" class="radio-option" name="meal-type" id="snack" value="snack">
+                        <label class="filter-label" for="snack">
                             <span class="radio-select"></span>
                             Snack
                         </label>
@@ -161,7 +161,7 @@
                     </div>
                    <div class="radio-input"> 
                         <input type="radio" class="radio-option" id="greek" name="cuisine" value="greek">
-                        <label class="filter-label" for="cuisine">
+                        <label class="filter-label" for="greek">
                             <span class="radio-select"></span>
                             Greek 
                         </label>
@@ -199,6 +199,92 @@
                         <label class="filter-label" for="thai">
                             <span class="radio-select"></span>
                             Thai 
+                        </label>
+                    </div>
+                </div>
+                <div class="allergens">
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen1" name="allergen1" value="Dairy">
+                        <label class="filter-label" for="allergen1"> 
+                            <span class="check-item"></span>
+                            Dairy
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen2" name="allergen2" value="Egg">
+                        <label class="filter-label" for="allergen2"> 
+                            <span class="check-item"></span>
+                            Egg
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen3" name="allergen3" value="Gluten">
+                        <label class="filter-label" for="allergen3"> 
+                            <span class="check-item"></span>
+                            Gluten
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen4" name="allergen4" value="Grain">
+                        <label class="filter-label" for="allergen4"> 
+                            <span class="check-item"></span>
+                            Grain
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen5" name="allergen5" value="Peanut">
+                        <label class="filter-label" for="allergen5"> 
+                            <span class="check-item"></span>
+                            Peanut
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen6" name="allergen6" value="Seafood">
+                        <label class="filter-label" for="allergen6"> 
+                            <span class="check-item"></span>
+                            Seafood
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen7" name="allergen7" value="Sesame">
+                        <label class="filter-label" for="allergen7"> 
+                            <span class="check-item"></span>
+                            Sesame
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen8" name="allergen8" value="Shellfish">
+                        <label class="filter-label" for="allergen8"> 
+                            <span class="check-item"></span>
+                            Shellfish
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen9" name="allergen9" value="Soy">
+                        <label class="filter-label" for="allergen9"> 
+                            <span class="check-item"></span>
+                            Soy
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen10" name="allergen10" value="Sulfite">
+                        <label class="filter-label" for="allergen10"> 
+                            <span class="check-item"></span>
+                            Sulfite
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen11" name="allergen11" value="Tree Nut">
+                        <label class="filter-label" for="allergen11"> 
+                            <span class="check-item"></span>
+                            Tree Nut
+                        </label>
+                    </div>
+                    <div class="checkbox-input">
+                        <input type="checkbox" class="check-option" id="allergen12" name="allergen12" value="Wheat">
+                        <label class="filter-label" for="allergen12"> 
+                            <span class="check-item"></span>
+                            Wheat
                         </label>
                     </div>
                 </div>
