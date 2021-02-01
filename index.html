@@ -10,10 +10,6 @@
 <body>
     <header class="header">
         <h1 class="main-heading">Recipe Finder</h1>
-        <form class="search-recipes">
-            <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipes">
-            <button class="search-btn"><span class="icon"><i class="fas fa-search"></i></span></button>
-        </form>
         <div class="icons">
             <span class="icon"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></span>
             <span class="icon"><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></span>
@@ -23,8 +19,17 @@
     </header>
     <main class="main-container">
         <div class="side-filter">
+            <form class="ingredient-form">
+                <ul class="ingredient-list">
+                    <input type="text" name="ingredients" class="ingredient-search" placeholder="Enter you list of ingredients separated by commas">
+                    <button class="ingredient-search" id="add-btn"><i class="fas fa-search"></i></button>
+                </ul>
+            </form>
             <form action="#" class="search-filters">
                 <div class="diet-type filter-group">
+                    <div class="recipe-name">
+                        <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipes">
+                    </div>
                     <h3 class="filter-heading">Diet Type</h3>
                     <div class="radio-input">
                         <input type="radio" class="radio-option" name="diet-type" id="gluten-free" value="gluten-free">
@@ -69,40 +74,68 @@
                         </label>
                     </div>
                 </div>
-                <div class="occasion filter-group">
-                    <h3 class="filter-heading">Special Occasions</h3>
-                    <div class="radio-input">
-                        <input type="radio" class="radio-option" name="occasion" id="Birthday" value="Birthday">
-                        <label class="filter-label" for="Birthday"> 
+                <div class="meal-type filter-group">
+                    <h3 class="filter-heading">Meal Type</h3>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="meal-type" id="appetizer" value="appetizer">
+                        <label class="filter-label" for="appetizer">
                             <span class="radio-select"></span>
-                            Birthday
+                            Appetizer
                         </label>
                     </div>
                     <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="occasion" id="Christmas" value="Christmas">
-                        <label class="filter-label" for="Christmas">
-                            <span class="radio-select"></span>Christmas 
+                        <input type="radio" class="radio-option" name="meal-type" id="breakfast" value="breakfast">
+                        <label class="filter-label" for="breakfast">
+                            <span class="radio-select"></span>Breakfast 
                         </label>  
                     </div>
-                   <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="occasion" id="Easter" value="Easter">
-                        <label class="filter-label" for="Easter">
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="meal-type" id="dessert" value="dessert">
+                        <label class="filter-label" for="dessert">
                             <span class="radio-select"></span>
-                            Easter
+                            Dessert
+                        </label>
+                    </div>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="meal-type" id="finger-food" value="fingerfood">
+                        <label class="filter-label" for="finger-food">
+                            <span class="radio-select"></span>
+                            Fingerfood
+                        </label>
+                    </div>
+                    <div class="radio-input">
+                        <input type="radio" class="radio-option" name="meal-type" id="main-course" value="main-course">
+                        <label class="filter-label" for="main-course"> 
+                            <span class="radio-select"></span>
+                            Main
                         </label>
                     </div>
                    <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="occasion" id="Halloween" value="Halloween">
-                        <label class="filter-label" for="Halloween">
+                        <input type="radio" class="radio-option" name="meal-type" id="salad" value="salad">
+                        <label class="filter-label" for="salad">
                             <span class="radio-select"></span>
-                            Halloween 
+                            Salad
                         </label>
                     </div>
-                   <div class="radio-input"> 
-                        <input type="radio" class="radio-option" name="occasion" id="Party Food" value="Party Food">
-                        <label class="filter-label" for="Party Food">
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="meal-type" id="side dish" value="side dish">
+                        <label class="filter-label" for="side dish">
                             <span class="radio-select"></span>
-                            Party Food
+                            Side dish 
+                        </label>
+                    </div>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="meal-type" id="soup" value="soup">
+                        <label class="filter-label" for="soup">
+                            <span class="radio-select"></span>
+                            Soup
+                        </label>
+                    </div>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="meal-type" id="snack" value="Snack">
+                        <label class="filter-label" for="Snack">
+                            <span class="radio-select"></span>
+                            Snack
                         </label>
                     </div>
                 </div>
