@@ -1,45 +1,64 @@
-const searchBtn = document.querySelector('.search-btn');
-const searchForm = document.querySelector('.search-recipes');
+const filterForm = document.querySelector('.search-filters');
 const recipeContainer = document.querySelector('.recipe-container');
-const mealType = document.querySelectorAll('input[name="meal-type"]');
+const dietType = document.querySelectorAll('input[name="diet-type"]');
 const occasionType = document.querySelectorAll('input[name="occasion"]');
 const cuisineType = document.querySelectorAll('input[name="cuisine"]');
 const filterBtn = document.querySelector('.filter-btn');
+let id = 0;
 
 
 const displayRecipes = (data) => {
     recipeContainer.innerHTML = '';
     const recipeList = data.recipeList.results;
-    console.log(recipeList);
     for(let i=0; i<recipeList.length; i++){
         let recipeCard = document.createElement('div');
         recipeCard.classList.add('recipe-card');
         recipeContainer.appendChild(recipeCard);
         let name = document.createElement('h3');
+        name.classList.add("recipe-heading");
         recipeCard.appendChild(name);
         name.textContent = recipeList[i].title;
         recipeCard.classList.add("recipe-card");
         let recipeImage = document.createElement('div');
         recipeCard.style.backgroundImage = `url(${recipeList[i].image})`;
-        recipeCard.style.backgroundSize = 'cover';
     }
 }
 
-const allRecipes = async (recipeName) => {
+const allRecipes = async (recipeName, diet, cuisine) => {
     //calling api function in here
-    const recipeList = await getRecipes(recipeName);
+    const recipeList = await getRecipes(recipeName, diet, cuisine);
     return { recipeList: recipeList }
 }
 
-searchForm.addEventListener("submit", e => {
+filterForm.addEventListener("submit", e => {
     e.preventDefault();
 
     //get the recipe name from the user
     const recipeName = document.querySelector('#recipe-search').value.trim();
-    searchForm.reset();
+    let diet = '';
+    for(let i=0; i<dietType.length; i++) {
+        if(dietType[i].checked) {
+            diet = dietType[i].value;
+        }
+    }
+    let cuisine = '';
+    for(let i=0; i<cuisineType.length; i++) {
+        if(cuisineType[i].checked) {
+            cusine = cuisineType[i].value;
+        }
+    }
 
-    allRecipes(recipeName)
+    filterForm.reset();
+
+    allRecipes(recipeName, diet, cuisine)
         .then(data => displayRecipes(data))
         .catch(err => console.log(err));
 });
+
+// filterBtn.addEventListener("click", () => {
+
+//     allRecipes(recipeName, diet, cuisine)
+//         .then(data => displayRecipes(data))
+//         .catch(err => console.log(err));
+// });
 
