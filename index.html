@@ -20,56 +20,66 @@
     <main class="main-container">
         <div class="side-filter">
             <form action="#" class="search-filters">
+                <div class="recipe-title">
+                    <h3 class="filter-heading">Recipe Name</h3>
                     <div class="recipe-name">
                         <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipes">
                     </div>
-                    <div class="ingredients">
-                        <input type="text" name="ingredients" class="ingredient-search" placeholder="Please leave a space between each ingredient">
+                </div>
+                <div class="ingredients">
+                    <h3 class="filter-heading">
+                        By Ingredients <span class="ingredient-info">(max 3 ingredients)</span>
+                    </h3>
+                    <div class="ingredient-input">
+                        <input type="text" name="ingredient" class="ingredient-search" placeholder="flour">
+                        <button type="button" class="add-btn"><i class="fas fa-plus"></i></button>
+                        <span id="ingredient-list"></span>
                     </div>
-                    <div class="diet-type filter-group">
-                        <h3 class="filter-heading">Diet Type</h3>
-                        <div class="radio-input">
-                            <input type="radio" class="radio-option" name="diet-type" id="gluten-free" value="Gluten Free">
-                            <label class="filter-label" for="gluten-free">
-                                <span class="radio-select"></span>
-                                Gluten Free 
-                            </label>
-                        </div>
-                        <div class="radio-input"> 
-                            <input type="radio" class="radio-option" name="diet-type" id="ketogenic" value="Ketogenic">
-                            <label class="filter-label" for="ketogenic">
-                                <span class="radio-select"></span>
-                                Ketogenic 
-                            </label>
-                        </div>
-                        <div class="radio-input"> 
-                            <input type="radio" class="radio-option" name="diet-type" id="pescetarian" value="Pescetarian">  
-                            <label class="filter-label" for="pescetarian">
-                                <span class="radio-select"></span> 
-                                Pescetarian
-                            </label>        
-                        </div>
-                        <div class="radio-input"> 
-                            <input type="radio" class="radio-option" name="diet-type" id="paleo" value="Paleo">
-                            <label class="filter-label" for="paleo">
-                                <span class="radio-select"></span>
-                                Paleo
-                            </label>
-                        </div>
-                        <div class="radio-input"> 
-                            <input type="radio" class="radio-option" name="diet-type" id="vegan" value="Vegan">
-                            <label class="filter-label" for="vegan">
-                                <span class="radio-select"></span>
-                                Vegan
-                            </label>
-                        </div>
-                        <div class="radio-input"> 
-                            <input type="radio" class="radio-option" name="diet-type" id="vegetarian" value="Vegetarian">
-                            <label class="filter-label" for="vegetarian">
-                                <span class="radio-select"></span>
-                                Vegetarian
-                            </label>
-                        </div>
+                </div>
+                <div class="diet-type filter-group">
+                    <h3 class="filter-heading">Diet Type</h3>
+                    <div class="radio-input">
+                        <input type="radio" class="radio-option" name="diet-type" id="gluten-free" value="Gluten Free">
+                        <label class="filter-label" for="gluten-free">
+                            <span class="radio-select"></span>
+                            Gluten Free 
+                        </label>
+                    </div>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="diet-type" id="ketogenic" value="Ketogenic">
+                        <label class="filter-label" for="ketogenic">
+                            <span class="radio-select"></span>
+                            Ketogenic 
+                        </label>
+                    </div>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="diet-type" id="pescetarian" value="Pescetarian">  
+                        <label class="filter-label" for="pescetarian">
+                            <span class="radio-select"></span> 
+                            Pescetarian
+                        </label>        
+                    </div>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="diet-type" id="paleo" value="Paleo">
+                        <label class="filter-label" for="paleo">
+                            <span class="radio-select"></span>
+                            Paleo
+                        </label>
+                    </div>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="diet-type" id="vegan" value="Vegan">
+                        <label class="filter-label" for="vegan">
+                            <span class="radio-select"></span>
+                            Vegan
+                        </label>
+                    </div>
+                    <div class="radio-input"> 
+                        <input type="radio" class="radio-option" name="diet-type" id="vegetarian" value="Vegetarian">
+                        <label class="filter-label" for="vegetarian">
+                            <span class="radio-select"></span>
+                            Vegetarian
+                        </label>
+                    </div>
                 </div>
                 <div class="meal-type filter-group">
                     <h3 class="filter-heading">Meal Type</h3>
