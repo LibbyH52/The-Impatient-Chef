@@ -1,6 +1,6 @@
 # Project Title
 
-The primary goal of this 
+The primary goal of this project is to read in information that is being stored on a web api. I chose to focus on a recipe website as I know quit a few 'foodies' who love to experiment with new recipes and ingredients.
 
 ## UX
 ### User Stories
