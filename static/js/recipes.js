@@ -10,3 +10,14 @@ const getRecipes = async (recipeName, diet, meal, cuisine, ingredientStr) => {
 
     return data;
 }
+
+const getRecipe = async (id) => {
+    const url = `https://api.spoonacular.com/recipes/${id}/information`;
+    const query = `?apiKey=${apiKey}`;
+
+    const response = await fetch(url+query);
+    const recipe = await response.json();
+
+    return recipe;
+}
+
