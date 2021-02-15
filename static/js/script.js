@@ -15,25 +15,46 @@ const addBtn = document.querySelector('.add-btn');
 
 const ingredientList = document.querySelector('#ingredient-list');
 
+const recipeOne = document.querySelector('.single-recipe');
+
 let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
 let ingredients = [];
 let badge = '';
 let id = 0;
 
+console.log(recipeOne);
 
 const showRecipe = (recipe) => {
     let recipeInfo = recipe.oneRecipe;
-    console.log(`title: ${recipeInfo.title}`);
-    console.log(`summary: ${recipeInfo.summary}`);
-    console.log(`ready in ${recipeInfo.readyInMinutes}`);
-    let ingredients = recipeInfo.extendedIngredients;
-    for(let i=0; i<ingredients.length; i++) {
-        console.log(ingredients[i].name);
+    console.log(`${recipeInfo.title}`);
+    if (recipeInfo.glutenFree === true) {
+        console.log("Gluten Free");
+    } 
+    if (recipeInfo.dairyFree === true) {
+        console.log("Dairy Free");
     }
-    let instructionsArr = recipeInfo.instructions.split('<ol><li></li></ol>');
-    for(let i=0; i<instructionsArr.length; i++) {
-        console.log(instructionsArr[i]);
+    if (recipeInfo.vegan === true) {
+        console.log("Vegan");
+    }
+    if (recipeInfo.vegetarian === true) {
+        console.log("Vegetarian");
+    }
+    if (recipeInfo.lowFodmap === true) {
+        console.log("Low Fodmap");
+    }
+    console.log(`Ready in ${recipeInfo.readyInMinutes} minutes`);
+    console.log(`Serves ${recipeInfo.servings}`);
+
+    let recipeIngredients = recipeInfo.extendedIngredients;
+    console.log('Ingredients');
+    for(let i=0; i<recipeIngredients.length; i++) {
+        console.log(recipeIngredients[i].original);
+    } 
+    let instructions = recipeInfo.analyzedInstructions[0].steps;
+    console.log('Instrutions');
+    for(let i=0; i<instructions.length; i++) {
+        console.log(`${instructions[i].number} ${instructions[i].step}`);
     }
     console.log(recipeInfo);
 }
@@ -55,6 +76,17 @@ const displayRecipes = (data) => {
         recipeContainer.appendChild(recipeCard);
         recipeCard.appendChild(name);
     }
+    getID(id);
+}
+
+const singleRecipe = async (id) => {
+    //calling api function in here
+    const oneRecipe = await getRecipe(id);
+    id = '';
+    return { oneRecipe: oneRecipe }
+}
+
+const getID = (id) => {
     const recipeCards = document.querySelectorAll('.recipe-card');
     console.log(recipeCards);
     recipeCards.forEach(recipeCard => {
@@ -65,16 +97,7 @@ const displayRecipes = (data) => {
                 .catch(err => console.log(err));
         });
     });
-}
-
-const singleRecipe = async (id) => {
-    //calling api function in here
-    const oneRecipe = await getRecipe(id);
-    return { oneRecipe: oneRecipe }
-}
-
-const getID = (id) => {
-    console.log(`function call ${id}`);
+    console.log(id);
 }
 
 const allRecipes = async (recipeName, diet, meal, cuisine, ingredients) => {
