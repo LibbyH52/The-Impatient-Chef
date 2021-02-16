@@ -17,13 +17,15 @@ const ingredientList = document.querySelector('#ingredient-list');
 
 const recipeOne = document.querySelector('.single-recipe');
 
+const recipeModal = document.querySelector('.recipe-modal');
+const closeBtn = document.querySelector('.close-btn');
+
 let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
 let ingredients = [];
 let badge = '';
 let id = 0;
 
-console.log(recipeOne);
 
 const showRecipe = (recipe) => {
     let recipeInfo = recipe.oneRecipe;
@@ -57,6 +59,10 @@ const showRecipe = (recipe) => {
         instructionList.appendChild(instructionItem);
     }
 }
+
+closeBtn.addEventListener("click", () => {
+    recipeModal.classList.add("hide");
+});
 
 const displayRecipes = (data) => {
     recipeContainer.innerHTML = '';
