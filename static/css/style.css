@@ -300,24 +300,45 @@ input#recipe-search{
 /************************************Recipe Modal*/
 .recipe-modal{
     position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -10%);
+    top: 50%;
+    left: 60%;
+    transform: translate(-60%, -50%);
     border: 1px solid navy;
     background-color: white;
     width: 800px;
     box-sizing: border-box;
-    height: 100%;
+    max-height: 95%;
     max-width: 90%;
     z-index: 10;
     overflow: scroll;
 }
 
 .modal-heading{
+    display: flex;
+    justify-content: center;
     height: 15rem;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+.single-recipe-title {
+    font-size: 2rem;
+    font-variant: small-caps;
+    font-weight: 500;
+    color: navy;
+}
+
+.close-btn{
+    right: 0;
+    top: 0;
+    position: fixed;
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    color: #f1f1f1;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .ingredient-list,
@@ -327,7 +348,7 @@ input#recipe-search{
 
 .list-item{
     list-style: none;
-    font-size: 1.5rem;    
+    font-size: 1.25rem;    
 }
 
 /************************************Media Queries*/
