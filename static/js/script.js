@@ -27,7 +27,13 @@ console.log(recipeOne);
 
 const showRecipe = (recipe) => {
     let recipeInfo = recipe.oneRecipe;
-    console.log(`${recipeInfo.title}`);
+    console.log(recipeInfo);
+    const recipeHeading = document.querySelector('.recipe-name');
+    const ingredientList = document.querySelector('.ingredient-list');
+    const instructionList = document.querySelector('.instruction-list');
+    const modalHeading = document.querySelector('.modal-heading');
+    recipeHeading.textContent = recipeInfo.title;
+    modalHeading.style.backgroundImage = `url(${recipeInfo.image})`
     if (recipeInfo.glutenFree === true) {
         console.log("Gluten Free");
     } 
@@ -50,13 +56,20 @@ const showRecipe = (recipe) => {
     console.log('Ingredients');
     for(let i=0; i<recipeIngredients.length; i++) {
         console.log(recipeIngredients[i].original);
+        let ingredientItem = document.createElement('li');
+        ingredientItem.classList.add('list-item');
+        ingredientItem.textContent = recipeIngredients[i].original;
+        ingredientList.appendChild(ingredientItem);
     } 
     let instructions = recipeInfo.analyzedInstructions[0].steps;
     console.log('Instrutions');
     for(let i=0; i<instructions.length; i++) {
         console.log(`${instructions[i].number} ${instructions[i].step}`);
+        let instructionItem = document.createElement('li');
+        instructionItem.classList.add('list-item');
+        instructionItem.textContent = `${instructions[i].number} ${instructions[i].step}`;
+        instructionList.appendChild(instructionItem);
     }
-    console.log(recipeInfo);
 }
 
 const displayRecipes = (data) => {

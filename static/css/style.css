@@ -75,6 +75,11 @@ body{
     cursor: pointer;
 }
 
+.one-image{
+    height: 360px;
+    width: 360px;
+}
+
 /************************Header Styles*/
 .header{
     background: #08182b;
@@ -292,6 +297,38 @@ input#recipe-search{
     opacity: 1;
 }
 
+/************************************Recipe Modal*/
+.recipe-modal{
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    border: 1px solid navy;
+    background-color: white;
+    width: 800px;
+    box-sizing: border-box;
+    height: 100%;
+    max-width: 90%;
+    z-index: 10;
+    overflow: scroll;
+}
+
+.modal-heading{
+    height: 15rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.ingredient-list,
+.instruction-list {
+    padding: .5rem 1rem;
+}
+
+.list-item{
+    list-style: none;
+    font-size: 1.5rem;    
+}
 
 /************************************Media Queries*/
 @media screen and (min-width: 600px) {
@@ -375,5 +412,10 @@ input#recipe-search{
     .recipe-card{
         flex: 0 0 30%;
         margin: 1rem;
+    }
+
+    .details{
+        display: flex;
+        justify-content: center;
     }
 }
