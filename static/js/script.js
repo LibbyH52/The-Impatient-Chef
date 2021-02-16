@@ -28,27 +28,14 @@ console.log(recipeOne);
 const showRecipe = (recipe) => {
     let recipeInfo = recipe.oneRecipe;
     console.log(recipeInfo);
-    const recipeHeading = document.querySelector('.recipe-name');
+    const recipeHeading = document.querySelector('.single-recipe-title');
     const ingredientList = document.querySelector('.ingredient-list');
     const instructionList = document.querySelector('.instruction-list');
     const modalHeading = document.querySelector('.modal-heading');
     recipeHeading.textContent = recipeInfo.title;
-    modalHeading.style.backgroundImage = `url(${recipeInfo.image})`
-    if (recipeInfo.glutenFree === true) {
-        console.log("Gluten Free");
-    } 
-    if (recipeInfo.dairyFree === true) {
-        console.log("Dairy Free");
-    }
-    if (recipeInfo.vegan === true) {
-        console.log("Vegan");
-    }
-    if (recipeInfo.vegetarian === true) {
-        console.log("Vegetarian");
-    }
-    if (recipeInfo.lowFodmap === true) {
-        console.log("Low Fodmap");
-    }
+    console.log(recipeInfo.title);
+    modalHeading.style.backgroundImage = `url(${recipeInfo.image})`;
+
     console.log(`Ready in ${recipeInfo.readyInMinutes} minutes`);
     console.log(`Serves ${recipeInfo.servings}`);
 
@@ -64,10 +51,9 @@ const showRecipe = (recipe) => {
     let instructions = recipeInfo.analyzedInstructions[0].steps;
     console.log('Instrutions');
     for(let i=0; i<instructions.length; i++) {
-        console.log(`${instructions[i].number} ${instructions[i].step}`);
         let instructionItem = document.createElement('li');
         instructionItem.classList.add('list-item');
-        instructionItem.textContent = `${instructions[i].number} ${instructions[i].step}`;
+        instructionItem.textContent = instructions[i].step;
         instructionList.appendChild(instructionItem);
     }
 }
