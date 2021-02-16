@@ -71,7 +71,6 @@ const displayRecipes = (data) => {
         recipeCard = document.createElement('div');
         recipeCard.classList.add('recipe-card');
         recipeCard.dataset.id = recipeList[i].id;
-        console.log(recipeList[i].id);
         let name = document.createElement('h3');
         name.classList.add("recipe-heading");
         name.textContent = recipeList[i].title;
@@ -93,13 +92,13 @@ const singleRecipe = async (id) => {
 
 const getID = (id) => {
     const recipeCards = document.querySelectorAll('.recipe-card');
-    console.log(recipeCards);
     recipeCards.forEach(recipeCard => {
         recipeCard.addEventListener("click", () => {
             id = recipeCard.dataset.id;
             singleRecipe(id)
                 .then(recipe => showRecipe(recipe))
                 .catch(err => console.log(err));
+            recipeModal.classList.remove('hide');
         });
     });
     console.log(id);
