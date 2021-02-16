@@ -304,8 +304,8 @@ input#recipe-search{
     left: 60%;
     transform: translate(-60%, -50%);
     border: 1px solid navy;
-    background-color: white;
-    width: 800px;
+    background-color: #f4f4f4;
+    width: 900px;
     box-sizing: border-box;
     max-height: 95%;
     max-width: 90%;
@@ -323,10 +323,14 @@ input#recipe-search{
 }
 
 .single-recipe-title {
+    letter-spacing: 2px;
     font-size: 2rem;
     font-variant: small-caps;
     font-weight: 500;
-    color: navy;
+    color:#08182b;;
+    align-self: center;
+    background: rgba(225, 225, 225, 0.5);
+    padding: 1rem 1.5rem;
 }
 
 .close-btn{
@@ -341,14 +345,31 @@ input#recipe-search{
     cursor: pointer;
 }
 
+.ingredient-details,
+.instruction-details {
+    padding: .5rem;
+    flex: 1;
+}
+
 .ingredient-list,
-.instruction-list {
-    padding: .5rem 1rem;
+.instruction-list{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.list-heading{
+    font-size: 1.5rem;
+    font-variant: small-caps;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ee2560;
 }
 
 .list-item{
     list-style: none;
-    font-size: 1.25rem;    
+    font-size: 1.2rem; 
+    padding: .2rem; 
+    color: #08182b;  
 }
 
 /************************************Media Queries*/
