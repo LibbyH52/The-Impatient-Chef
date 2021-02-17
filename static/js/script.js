@@ -20,6 +20,8 @@ const recipeOne = document.querySelector('.single-recipe');
 const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
 
+const dietInfo = document.querySelector('.diet-info');
+
 let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
 let ingredients = [];
@@ -40,6 +42,14 @@ const showRecipe = (recipe) => {
 
     console.log(`Ready in ${recipeInfo.readyInMinutes} minutes`);
     console.log(`Serves ${recipeInfo.servings}`);
+    let diets = recipeInfo.diets;
+    console.log(diets);
+    for(let i=0; i<diets.length; i++){
+        let dietTag = document.createElement('span');
+        dietTag.classList.add('free-from');
+        dietTag.textContent = diets[i];
+        dietInfo.appendChild(dietTag);
+    }
 
     let recipeIngredients = recipeInfo.extendedIngredients;
     console.log('Ingredients');
@@ -50,13 +60,17 @@ const showRecipe = (recipe) => {
         ingredientItem.textContent = recipeIngredients[i].original;
         ingredientList.appendChild(ingredientItem);
     } 
-    let instructions = recipeInfo.analyzedInstructions[0].steps;
-    console.log('Instrutions');
-    for(let i=0; i<instructions.length; i++) {
-        let instructionItem = document.createElement('li');
-        instructionItem.classList.add('list-item');
-        instructionItem.textContent = instructions[i].step;
-        instructionList.appendChild(instructionItem);
+    if(recipeInfo.analyzedInstructions.length > 0) {
+        let instructions = recipeInfo.analyzedInstructions[0].steps;
+        for(let i=0; i<instructions.length; i++) {
+            let instructionItem = document.createElement('li');
+            instructionItem.classList.add('list-item');
+            instructionItem.textContent = instructions[i].step;
+            instructionList.appendChild(instructionItem);
+        }
+        console.log(`Instructions ${instructionList} `);
+    } else {
+        instructionList.innerHTML = "This is embarrassing. </br> There are no instructions available for this recipe"
     }
 }
 
