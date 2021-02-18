@@ -5,10 +5,11 @@ const filterBtns = document.querySelectorAll('.filter-btn');
 
 const recipeContainer = document.querySelector('.recipe-container');
 
+//captures input from html form (filter form)
 const dietType = document.querySelectorAll('input[name="diet-type"]');
 const mealType = document.querySelectorAll('input[name="meal-type"]');
 const cuisineType = document.querySelectorAll('input[name="cuisine"]');
-const allergenList = document.querySelectorAll('input[class="allergens"]');
+const allergenList = document.querySelectorAll('input[name="allergen"]');
 const ingredient = document.querySelector('input[name="ingredient"]');
 
 const addBtn = document.querySelector('.add-btn');
@@ -21,12 +22,18 @@ const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
 
 const dietInfo = document.querySelector('.diet-info');
+const nutritionInfo = document.querySelector('.recipe-info');
 
 let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
 let ingredients = [];
 let badge = '';
 let id = 0;
+
+//arrays for pushing allergen & cuisine selection
+let allergens = [];
+let cuisines = [];
+
 
 
 const showRecipe = (recipe) => {
@@ -44,6 +51,20 @@ const showRecipe = (recipe) => {
     console.log(`Serves ${recipeInfo.servings}`);
     let diets = recipeInfo.diets;
     console.log(diets);
+    let nutrientInfo = recipeInfo.nutrition.nutrients;
+    for(let i=0; i<nutrientInfo.length; i++){
+        if(nutrientInfo[i].name === 'Calories' ||nutrientInfo[i].name === 'Carbohydrates' || nutrientInfo[i].name==='Fat' ||nutrientInfo[i].name==='sugar'|| nutrientInfo[i].name==='Protein'||nutrientInfo[i].name==='Fiber' || nutrientInfo[i].name==='salt' ) {
+            if(nutrientInfo[i].name === 'Carbohydrates'){
+                nutrientInfo[i].name = 'Carbs'
+            }
+            let nutrition = document.createElement('span');
+            nutrition.classList.add('nutrient-info');
+            nutrition.textContent = `${nutrientInfo[i].name} <br /> ${nutrientInfo[i].amount}${nutrientInfo[i].unit}`;
+            nutritionInfo.appendChild(nutrition);
+        }
+    }
+
+
     for(let i=0; i<diets.length; i++){
         let dietTag = document.createElement('span');
         dietTag.classList.add('free-from');
@@ -94,6 +115,7 @@ const displayRecipes = (data) => {
         recipeContainer.appendChild(recipeCard);
         recipeCard.appendChild(name);
     }
+    console.log(recipeList);
     getID(id);
 }
 
@@ -156,9 +178,10 @@ filterForm.addEventListener("submit", e => {
 
     for(let i=0; i<allergenList.length; i++) {
         if(allergenList[i].checked) {
-            console.log(allergenList[i].value);
+            allergens.push(allergenList[i].value);
         }
     }
+    allergen = allergens.join(',');
 
     for(let i=0; i<dietType.length; i++) {
         if(dietType[i].checked) {
@@ -174,9 +197,10 @@ filterForm.addEventListener("submit", e => {
 
     for(let i=0; i<cuisineType.length; i++) {
         if(cuisineType[i].checked) {
-            cusine = cuisineType[i].value;
+            cuisines.push(cuisineType[i].value);
         }
     }
+    cuisine = cuisines.join(',');
 
     filterForm.reset();
 
