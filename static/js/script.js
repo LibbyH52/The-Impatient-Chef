@@ -43,6 +43,8 @@ const showRecipe = (recipe) => {
     const ingredientList = document.querySelector('.ingredient-list');
     const instructionList = document.querySelector('.instruction-list');
     const modalHeading = document.querySelector('.modal-heading');
+    const recipeAuthor = document.querySelector('.recipe-author');
+    recipeAuthor.textContent = recipeInfo.sourceName;
     recipeHeading.textContent = recipeInfo.title;
     console.log(recipeInfo.title);
     modalHeading.style.backgroundImage = `url(${recipeInfo.image})`;
@@ -59,7 +61,7 @@ const showRecipe = (recipe) => {
             }
             let nutrition = document.createElement('span');
             nutrition.classList.add('nutrient-info');
-            nutrition.textContent = `${nutrientInfo[i].name} <br /> ${nutrientInfo[i].amount}${nutrientInfo[i].unit}`;
+            nutrition.textContent = `${nutrientInfo[i].name} ${nutrientInfo[i].amount}${nutrientInfo[i].unit}`;
             nutritionInfo.appendChild(nutrition);
         }
     }
@@ -89,7 +91,6 @@ const showRecipe = (recipe) => {
             instructionItem.textContent = instructions[i].step;
             instructionList.appendChild(instructionItem);
         }
-        console.log(`Instructions ${instructionList} `);
     } else {
         instructionList.innerHTML = "This is embarrassing. </br> There are no instructions available for this recipe"
     }
@@ -105,15 +106,41 @@ const displayRecipes = (data) => {
     for(let i=0; i<recipeList.length; i++){
         recipeCard = document.createElement('div');
         recipeCard.classList.add('recipe-card');
+        //capture the recipe id for displaying a single recipe on click
         recipeCard.dataset.id = recipeList[i].id;
-        let name = document.createElement('h3');
-        name.classList.add("recipe-heading");
-        name.textContent = recipeList[i].title;
         recipeCard.classList.add("recipe-card");
-        let recipeImage = document.createElement('div');
-        recipeCard.style.backgroundImage = `url(${recipeList[i].image})`;
+        //three parts of the recipe card
+        let cardHead = document.createElement('div'); 
+        let cardBody = document.createElement('div');
+        let cardFooter = document.createElement('div'); 
+
+        //classes to the various elements for styling
+        cardHead.classList.add('recipe-head');
+        cardBody.classList.add('recipe-body');
+        cardFooter.classList.add('recipe-footer');
+
+        //recipe image & source for the cardHead
+        let image = document.createElement('img');
+        image.src = recipeList[i].image;
+
+        //recipe name & author for the card body
+        let name = document.createElement('h3');
+
+        //paragraphs for cardFooter
+        let cuisineInfo = document.createElement('p');
+        let courseInfo = document.createElement('p');
+
+        image.classList.add('recipe-img');
+        name.classList.add("recipe-heading");
+
+        name.textContent = recipeList[i].title;
+
+        //add child divs to the relevant elements
         recipeContainer.appendChild(recipeCard);
-        recipeCard.appendChild(name);
+        recipeCard.appendChild(cardHead);
+        cardHead.appendChild(image);
+        recipeCard.appendChild(cardBody);
+        cardBody.appendChild(name);
     }
     console.log(recipeList);
     getID(id);
