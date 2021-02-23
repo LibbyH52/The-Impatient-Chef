@@ -16,15 +16,23 @@ const addBtn = document.querySelector('.add-btn');
 
 const ingredientList = document.querySelector('#ingredient-list');
 
-const recipeOne = document.querySelector('.single-recipe');
+const recipeOne = document.querySelector('#single-recipe');
 
-const recipeModal = document.querySelector('.recipe-modal');
+// const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
 
 const dietInfo = document.querySelector('.diet-info');
 const nutritionInfo = document.querySelector('.recipe-info');
 
-let recipeCards = recipeContainer.childNodes;
+//singleRecipe variables
+const singleImg = document.querySelector('.single-img');
+const singleDetails = document.querySelector('.single-details');
+const recipeHeading = document.querySelector('.single-title');
+const recipeAuthor = document.querySelector('.recipe-author');
+const singleRecipeIngredients = document.querySelector('.ingredient-list');
+const instructionList = document.querySelector('.instruction-list');
+
+// let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
 let ingredients = [];
 let badge = '';
@@ -35,26 +43,25 @@ let allergens = [];
 let cuisines = [];
 
 
-
 const showRecipe = (recipe) => {
     let recipeInfo = recipe.oneRecipe;
     console.log(recipeInfo);
-    const recipeHeading = document.querySelector('.single-recipe-title');
-    const ingredientList = document.querySelector('.ingredient-list');
-    const instructionList = document.querySelector('.instruction-list');
-    const modalHeading = document.querySelector('.modal-heading');
-    const recipeAuthor = document.querySelector('.recipe-author');
-    recipeAuthor.textContent = recipeInfo.sourceName;
+
+    let recipeImage = document.createElement('img');
     recipeHeading.textContent = recipeInfo.title;
-    console.log(recipeInfo.title);
-    modalHeading.style.backgroundImage = `url(${recipeInfo.image})`;
+    recipeImage.setAttribute("alt", `picture of ${recipeInfo.title}`);
+    recipeImage.setAttribute("src", recipeInfo.image);
+    recipeImage.classList.add("recipe-img");
+    recipeAuthor.textContent = recipeInfo.author;
+    singleImg.appendChild(recipeImage);
 
     console.log(`Ready in ${recipeInfo.readyInMinutes} minutes`);
     console.log(`Serves ${recipeInfo.servings}`);
     let diets = recipeInfo.diets;
     console.log(diets);
     let nutrientInfo = recipeInfo.nutrition.nutrients;
-    for(let i=0; i<nutrientInfo.length; i++){
+
+    for (let i=0; i<nutrientInfo.length; i++){
         if(nutrientInfo[i].name === 'Calories' ||nutrientInfo[i].name === 'Carbohydrates' || nutrientInfo[i].name==='Fat' ||nutrientInfo[i].name==='sugar'|| nutrientInfo[i].name==='Protein'||nutrientInfo[i].name==='Fiber' || nutrientInfo[i].name==='salt' ) {
             if(nutrientInfo[i].name === 'Carbohydrates'){
                 nutrientInfo[i].name = 'Carbs'
@@ -81,7 +88,7 @@ const showRecipe = (recipe) => {
         let ingredientItem = document.createElement('li');
         ingredientItem.classList.add('list-item');
         ingredientItem.textContent = recipeIngredients[i].original;
-        ingredientList.appendChild(ingredientItem);
+        singleRecipeIngredients.appendChild(ingredientItem);
     } 
     if(recipeInfo.analyzedInstructions.length > 0) {
         let instructions = recipeInfo.analyzedInstructions[0].steps;
@@ -97,7 +104,13 @@ const showRecipe = (recipe) => {
 }
 
 closeBtn.addEventListener("click", () => {
-    recipeModal.classList.add("hide");
+    recipeOne.classList.add("hide");
+    recipeContainer.classList.remove("hide");
+    singleImg.innerHTML = '';
+    recipeHeading.innerHTML = '';
+    recipeAuthor.innerHTML = '';
+    singleRecipeIngredients.innerHTML = '';
+    instructionList.innerHTML = '';
 });
 
 const displayRecipes = (data) => {
@@ -153,15 +166,17 @@ const singleRecipe = async (id) => {
     return { oneRecipe: oneRecipe }
 }
 
+
 const getID = (id) => {
     const recipeCards = document.querySelectorAll('.recipe-card');
     recipeCards.forEach(recipeCard => {
         recipeCard.addEventListener("click", () => {
             id = recipeCard.dataset.id;
+            recipeOne.classList.remove('hide');
+            recipeContainer.classList.add('hide');
             singleRecipe(id)
                 .then(recipe => showRecipe(recipe))
                 .catch(err => console.log(err));
-            recipeModal.classList.remove('hide');
         });
     });
     console.log(id);
