@@ -111,6 +111,8 @@ closeBtn.addEventListener("click", () => {
     recipeAuthor.innerHTML = '';
     singleRecipeIngredients.innerHTML = '';
     instructionList.innerHTML = '';
+    nutritionInfo.innerHTML = '';
+    dietInfo.innerHTML ='';
 });
 
 const displayRecipes = (data) => {
