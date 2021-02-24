@@ -21,7 +21,7 @@ const recipeOne = document.querySelector('#single-recipe');
 // const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
 
-const dietInfo = document.querySelector('.diet-info');
+const dietInfo = document.querySelector('.diet-details');
 const nutritionInfo = document.querySelector('.recipe-info');
 
 //singleRecipe variables
@@ -90,16 +90,12 @@ const showRecipe = (recipe) => {
         ingredientItem.textContent = recipeIngredients[i].original;
         singleRecipeIngredients.appendChild(ingredientItem);
     } 
-    if(recipeInfo.analyzedInstructions.length > 0) {
-        let instructions = recipeInfo.analyzedInstructions[0].steps;
-        for(let i=0; i<instructions.length; i++) {
-            let instructionItem = document.createElement('li');
-            instructionItem.classList.add('list-item');
-            instructionItem.textContent = instructions[i].step;
-            instructionList.appendChild(instructionItem);
-        }
-    } else {
-        instructionList.innerHTML = "This is embarrassing. </br> There are no instructions available for this recipe"
+    let instructions = recipeInfo.analyzedInstructions[0].steps;
+    for(let i=0; i<instructions.length; i++) {
+        let instructionItem = document.createElement('li');
+        instructionItem.classList.add('list-item');
+        instructionItem.textContent = instructions[i].step;
+        instructionList.appendChild(instructionItem);
     }
 }
 
