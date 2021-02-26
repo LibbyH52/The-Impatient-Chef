@@ -399,6 +399,11 @@ input#recipe-search{
     width: 100%;
 }
 
+.diet-details{
+    display: flex;
+    align-items: center;
+}
+
 .recipe-info{
     display: flex;
     align-self: center;
@@ -408,25 +413,45 @@ input#recipe-search{
 .nutrient-info {
     box-sizing: border-box;
     display: flex;
-    flex-wrap: wrap;
-    background-color:  rgba(68, 216, 253, .4);
     color: #08182b;
-    font-size: 1rem;
-    height: 6rem;
-    width: 6rem;
-    max-width: content;
-    padding: 2rem .75rem;
-    text-align: center;
+    padding: 1rem .25rem 0;
 }
 
-.nutrient-info:not(first-of-type){
-    margin-left: .75rem;
+.nutrition{
+    background:rgba(69, 217, 253,0.4);
+    padding: 1rem 0;
+    margin: 0 .25rem;
+    text-align: center;
+    width: 6.5rem;
+    position: relative;
+    bottom: 0;
+}
+
+.nutrient-name,
+.nutrient-amount{
+    display: block;
+    font-size: 1.5rem;
+}
+
+.nutrient-amount{
+    font-variant: small-caps;
+}
+
+.diet-heading{
+    font-size: 1.25rem;
+    line-height: 2.5rem;
 }
 
 .free-from{
     font-size: 1rem;
-    padding: 1rem;
+    padding: .5rem;
     line-height: 2rem;
+}
+
+.free-from:not(:last-of-type)::after{
+    content: '|';
+    font-size: 2rem;
+    padding: 0 .25rem;
 }
 
 .ingredient-details,
