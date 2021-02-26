@@ -340,14 +340,13 @@ input#recipe-search{
 
 
 .single-heading {
-    height: 6rem;
     font-variant: small-caps;
 }
 
 .single-img .recipe-img{
     width: 36rem;
     border-radius: 2rem;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
 }
 
 .single-title {
@@ -390,6 +389,36 @@ input#recipe-search{
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+.single-info{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+.ready-in, 
+.servings {
+    font-size: 1.25rem;
+    padding: .5rem 1rem;
+    width: 100%;
+}
+
+.ready-in{
+    flex: 0 0 50%;
+}
+
+.icon,
+.text {
+    font-size: 1.4rem;
+    padding-right: .5rem;
+    color: #08182b;
+}
+
+.meal-type,
+.cuisine {
+    padding: .5rem 1rem;
+    width: 80%;
 }
 
 .diet-info{
