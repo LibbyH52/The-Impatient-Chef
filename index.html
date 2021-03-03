@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="static/css/style.css">
-    <title>Recipe Finder</title>
+    <title>The Impatient Chef</title>
 </head>
 <body>
+    <nav id="navigation">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            <div class="right-nav">
+                <li class="nav-item icon"><a class="nav-link" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                <li class="nav-item icon"><a class="nav-link" href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li class="nav-item icon"><a class="nav-link" href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                <li class="nav-item icon"><a class="nav-link" href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            </div>
+        </ul>
+    </nav>
     <header class="header">
-        <h1 class="main-heading">Recipe Finder</h1>
-        <div class="icons">
-            <span class="icon"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></span>
-            <span class="icon"><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></span>
-            <span class="icon"><a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></span>
-            <span class="icon"><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></span>
-        </div>
+        <h1 class="main-heading">The Impatient Chef</h1>   
     </header>
     <main class="main-container">
         <div class="side-filter">
@@ -305,7 +311,8 @@
             </form>
         </div>
         <div class="recipes">
-            <div class="recipe-container">
+            <div class="random-container"></div>
+            <div class="recipe-container hide">
             </div>
             <div  class="single-container hide" id="single-recipe">
                 <button class="close-btn">Back to Search Results</button>
@@ -326,10 +333,6 @@
                                 <span class="text">Serves: </span>
                                 <span class="serving-size"></span>
                             </div>
-                        </div>
-                        <div class="meal-type">
-                            <span class="icon"><i class="fas fa-utensils"></i> </span>
-                            <span class="text">Meal Type: </span>
                         </div>
                         <div class="cuisine">
                             <span class="icon"><i class="fas fa-globe"></i> </span>
