@@ -16,15 +16,16 @@ const addBtn = document.querySelector('.add-btn');
 
 const ingredientList = document.querySelector('#ingredient-list');
 
-const recipeOne = document.querySelector('#single-recipe');
+const recipeOne = document.querySelector('#single-recipe')
 
 // const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
 
-const dietInfo = document.querySelector('.diet-details');
-const nutritionInfo = document.querySelector('.recipe-info');
+
 
 //singleRecipe variables
+const dietInfo = document.querySelector('.diet-details');
+const nutritionInfo = document.querySelector('.nutrient-info');
 const singleImg = document.querySelector('.single-img');
 const singleDetails = document.querySelector('.single-details');
 const recipeHeading = document.querySelector('.single-title');
@@ -54,11 +55,11 @@ const showRecipe = (recipe) => {
     recipeImage.classList.add("recipe-img");
     recipeAuthor.textContent = recipeInfo.author;
     singleImg.appendChild(recipeImage);
-
-    console.log(`Ready in ${recipeInfo.readyInMinutes} minutes`);
-    console.log(`Serves ${recipeInfo.servings}`);
+    let readyIn = document.querySelector('.minutes');
+    readyIn.textContent = `${recipeInfo.readyInMinutes} minutes`;
+    let servingSize = document.querySelector('.serving-size');
+    servingSize.textContent = recipeInfo.servings;
     let diets = recipeInfo.diets;
-    console.log(diets);
     let nutrientInfo = recipeInfo.nutrition.nutrients;
 
     for (let i=0; i<nutrientInfo.length; i++){
@@ -66,9 +67,16 @@ const showRecipe = (recipe) => {
             if(nutrientInfo[i].name === 'Carbohydrates'){
                 nutrientInfo[i].name = 'Carbs'
             }
-            let nutrition = document.createElement('span');
-            nutrition.classList.add('nutrient-info');
-            nutrition.textContent = `${nutrientInfo[i].name} ${nutrientInfo[i].amount}${nutrientInfo[i].unit}`;
+            let nutrition = document.createElement('div');
+            let nutrientName = document.createElement('span');
+            let nutrientAmount = document.createElement('span');
+            nutrition.classList.add('nutrition');
+            nutrientName.classList.add('nutrient-name');
+            nutrientAmount.classList.add('nutrient-amount');
+            nutrientName.textContent = nutrientInfo[i].name;
+            nutrientAmount.textContent = `${nutrientInfo[i].amount} ${nutrientInfo[i].unit}`;
+            nutrition.appendChild(nutrientName);
+            nutrition.appendChild(nutrientAmount);
             nutritionInfo.appendChild(nutrition);
         }
     }
@@ -180,6 +188,12 @@ const getID = (id) => {
     console.log(id);
 }
 
+const showRandomRecipes = async () => {
+    //calling api function in here
+    const recipeList = await randomRecipes();
+    return { recipeList: recipeList }
+}
+
 const allRecipes = async (recipeName, diet, meal, cuisine, ingredients) => {
     //calling api function in here
     const recipeList = await getRecipes(recipeName, diet, meal, cuisine,ingredients);
@@ -200,6 +214,12 @@ addBtn.addEventListener("click", () => {
         badge.appendChild(undo);
         ingredient.value = '';
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    randomRecipes()
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
 });
 
 filterForm.addEventListener("submit", e => {
@@ -229,11 +249,11 @@ filterForm.addEventListener("submit", e => {
         }
     }
 
-    for(let i=0; i<mealType.length; i++) {
-        if(mealType[i].checked) {
-            meal = mealType[i].value;
-        }
-    }
+    // for(let i=0; i<mealType.length; i++) {
+    //     if(mealType[i].checked) {
+    //         meal = mealType[i].value;
+    //     }
+    // }
 
     for(let i=0; i<cuisineType.length; i++) {
         if(cuisineType[i].checked) {
