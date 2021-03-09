@@ -24,7 +24,7 @@
         <h1 class="main-heading">The Impatient Chef</h1>   
     </header>
     <main class="main-container">
-        <div class="side-filter">
+        <!-- <div class="side-filter">
             <form action="#" class="search-filters">
                 <div class="recipe-title">
                     <h3 class="filter-heading">Recipe Name</h3>
@@ -309,55 +309,53 @@
                 </div>
                 <button class="filter-btn">Filter recipes</button>
             </form>
+        </div> -->
+        <div class="random-container"></div>
+        <div class="recipe-container hide">
         </div>
-        <div class="recipes">
-            <div class="random-container"></div>
-            <div class="recipe-container hide">
-            </div>
-            <div  class="single-container hide" id="single-recipe">
-                <button class="close-btn">Back to Search Results</button>
-                <div class="single-header">
-                    <div class="single-details">
-                        <h2 class="single-heading">
-                            <span class="recipe-author"></span>
-                            <span class="single-title"></span>
-                        </h2>
-                        <div class="single-info">
-                            <div class="ready-in">
-                                <span class="icon"><i class="far fa-clock"></i></span>
-                                <span class="text">Ready in: </span>
-                                <span class="minutes"></span>
-                            </div>
-                            <div class="servings">
-                                <span class="icon"><i class="fas fa-user-friends"></i> </span>
-                                <span class="text">Serves: </span>
-                                <span class="serving-size"></span>
-                            </div>
+        <div  class="single-container hide" id="single-recipe">
+            <button class="close-btn">Back to Search Results</button>
+            <div class="single-header">
+                <div class="single-details">
+                    <h2 class="single-heading">
+                        <span class="single-title"></span>
+                        <span class="recipe-author"></span>
+                    </h2>
+                    <div class="single-info">
+                        <div class="ready-in">
+                            <span class="icon"><i class="far fa-clock"></i></span>
+                            <span class="text">Ready in: </span>
+                            <span class="minutes"></span>
                         </div>
-                        <div class="cuisine">
-                            <span class="icon"><i class="fas fa-globe"></i> </span>
-                            <span class="text">Cuisine: </span>
-                        </div>
-                        <div class="diet-info">
-                            <h4 class="diet-heading">Diets: </h4>
-                            <div class="diet-details"></div>
-                        </div>
-                        <div class="nutrient-info">
-        
+                        <div class="servings">
+                            <span class="icon"><i class="fas fa-user-friends"></i> </span>
+                            <span class="text">Serves: </span>
+                            <span class="serving-size"></span>
                         </div>
                     </div>
-                    <div class="single-img"></div>
+                    <div class="cuisine">
+                        <span class="icon"><i class="fas fa-globe"></i> </span>
+                        <span class="text">Cuisine: </span>
+                    </div>
+                    <div class="diet-info">
+                        <h4 class="diet-heading">Diets: </h4>
+                        <div class="diet-details"></div>
+                    </div>
+                    <div class="nutrient-info">
+    
+                    </div>
                 </div>
-                <div class="details">
-                    <div class="ingredient-details">
-                        <h3 class="list-heading">Ingredients</h3>
-                        <ul class=ingredient-list>
-                        </ul>
-                    </div>
-                    <div class="instruction-details">
-                        <h3 class="list-heading">Method</h3>
-                        <ol class="instruction-list"></ol>
-                    </div>
+                <div class="single-img"></div>
+            </div>
+            <div class="details">
+                <div class="ingredient-details">
+                    <h3 class="list-heading">Ingredients</h3>
+                    <ul class=ingredient-list>
+                    </ul>
+                </div>
+                <div class="instruction-details">
+                    <h3 class="list-heading">Method</h3>
+                    <ol class="instruction-list"></ol>
                 </div>
             </div>
         </div>
