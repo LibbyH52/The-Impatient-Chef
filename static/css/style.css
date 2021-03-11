@@ -385,14 +385,13 @@ input#recipe-search{
     padding: 3rem 0;
 }
 
-
 .single-heading {
     font-variant: small-caps;
 }
 
 .single-img,
 .recipe-img{
-    width: 95%;
+    width: 100%;
     border-radius: 2rem;
     padding: 1rem 0;
     grid-column: 1/-1;
@@ -406,7 +405,27 @@ input#recipe-search{
     font-weight: 700;
     color: #08182b;
     align-self: center;
-    padding: 1rem .5rem;
+    padding: .25rem;
+}
+
+.source-details {
+    color: #08182b;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    transition: all .2s ease;
+}
+
+.recipe-author {
+    color: #08182b;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.source-details:hover{
+    text-shadow: 1px 2px 5px #ee2560;
+    transform: scaleY(1.05);
 }
 
 .close-btn{
@@ -538,30 +557,39 @@ input#recipe-search{
     padding: 0 .25rem;
 }
 
+.details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .ingredient-details,
 .instruction-details {
     background: #f4f4f4;
     padding: .5rem;
-    flex: 1;
+}
+
+.ingredient-details{
+    width: 70%;
+    margin: 0 auto;
 }
 
 .ingredient-list,
 .instruction-list{
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .list-heading{
     font-size: 1.5rem;
     font-variant: small-caps;
-    text-align: center;
     letter-spacing: 1px;
     color: #ee2560;
 }
 
 .list-item{
-    font-size: 1.2rem; 
-    padding: .2rem; 
+    font-size: 1.5rem; 
+    padding: .25rem; 
     color: #08182b; 
 }
 
@@ -572,6 +600,11 @@ input#recipe-search{
 .ingredient-list{
     max-width: 100%;
     padding: .5rem 1rem;
+    margin-left: -1.5rem;
+}
+
+.instruction-list{
+    margin-left: 1.5rem; /*Move number under list heading*/
 }
 
 .hide{
@@ -588,6 +621,19 @@ input#recipe-search{
     .nutrient-info{
         width: 90%;
     }
+
+    .ingredient-details{
+        width: 100%;
+    }
+
+    .ingredient-list{
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    .ingredient-details > h3.list-heading {
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 550px){
@@ -599,18 +645,21 @@ input#recipe-search{
         width: 100%;
     }
 
-    .single-header{
-        width: 80%;
+    .single-container{
+        width: 70%;
         margin: 0 auto;
     }
 
     .single-heading{
-        text-align: center;
-        width: 100%;
+        margin-bottom: 2rem;
     }
 
     .single-title{
-        font-size: 2.5rem;
+        font-size: 3.5rem;
+    }
+
+    .source-details{
+        padding: 0 .25rem;
     }
 
     .single-info{
@@ -661,6 +710,14 @@ input#recipe-search{
         width: 40%;
         margin-right: 10rem;
     }
+
+    .ingredient-list{
+        width: 50%;
+    }
+
+    .instruction-list{
+        width: 75%;
+    }
 }
 
 @media screen and (min-width: 780px) {
@@ -685,7 +742,7 @@ input#recipe-search{
     }
 
     .single-container{
-        width: 100%;
+        width: 95%;
     }
 
     .single-header{
@@ -695,6 +752,10 @@ input#recipe-search{
 
     .single-heading{
         text-align: left;
+    }
+
+    .single-title {
+        font-size: 2.5rem;
     }
 
     .single-details{
@@ -722,6 +783,33 @@ input#recipe-search{
     .recipe-img{
         margin: 0 auto;
     } 
+
+    .details{
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .ingredient-details{
+        flex: 0 0 30%;
+    }
+
+    .instruction-details{
+        flex: 0 0 70%;
+    }
+
+    .ingredient-list{
+        padding: .5rem 2rem;
+        width: 80%;
+    }
+
+    .instuction-list{
+        width: 95%;
+        padding: .5rem 1rem;
+    }
+
+    .list-item{
+        font-size: 1.75rem;
+    }
 }
 
 @media screen and (min-width: 1000px) {
@@ -734,16 +822,20 @@ input#recipe-search{
         width: 100%;
     }
 
+    .single-container{
+        width: 80%;
+    }
+
     .single-details{
-        grid-column: 1/7;
+        grid-column: 1/6;
+    }
+
+    .nutrient-info{
+        width: 80%;
+        margin-left: 0;
     }
 
     .single-img{
         grid-column: 7/-1;
-    }
-
-    .single-container{
-        width: 70%;
-        margin: 0 auto;
     }
 }
