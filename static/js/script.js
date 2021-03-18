@@ -4,6 +4,7 @@ const filterForm = document.querySelector('.search-filters');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
 const recipeContainer = document.querySelector('.recipe-container');
+const randomContainer = document.querySelector('.random-container');
 
 //captures input from html form (filter form)
 const dietType = document.querySelectorAll('input[name="diet-type"]');
@@ -33,6 +34,8 @@ const recipeAuthor = document.querySelector('.recipe-author');
 const singleRecipeIngredients = document.querySelector('.ingredient-list');
 const instructionList = document.querySelector('.instruction-list');
 
+let randomTag = '';
+let tagName = '';
 // let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
 let ingredients = [];
@@ -49,11 +52,16 @@ const showRecipe = (recipe) => {
     console.log(recipeInfo);
 
     let recipeImage = document.createElement('img');
-    recipeHeading.textContent = recipeInfo.title;
     recipeImage.setAttribute("alt", `picture of ${recipeInfo.title}`);
     recipeImage.setAttribute("src", recipeInfo.image);
     recipeImage.classList.add("recipe-img");
-    recipeAuthor.textContent = recipeInfo.author;
+    recipeHeading.textContent = recipeInfo.title;
+    recipeAuthor.setAttribute('href', recipeInfo.sourceUrl);
+    if(recipeInfo.creditsText.includes(recipeInfo.sourceName)){
+        recipeAuthor.textContent = recipeInfo.sourceName;
+    } else {
+        recipeAuthor.textContent = recipeInfo.creditsText;
+    }
     singleImg.appendChild(recipeImage);
     let readyIn = document.querySelector('.minutes');
     readyIn.textContent = `${recipeInfo.readyInMinutes} minutes`;
@@ -110,6 +118,7 @@ const showRecipe = (recipe) => {
 closeBtn.addEventListener("click", () => {
     recipeOne.classList.add("hide");
     recipeContainer.classList.remove("hide");
+    randomContainer.classList.remove("hide");
     singleImg.innerHTML = '';
     recipeHeading.innerHTML = '';
     recipeAuthor.innerHTML = '';
@@ -118,6 +127,54 @@ closeBtn.addEventListener("click", () => {
     nutritionInfo.innerHTML = '';
     dietInfo.innerHTML ='';
 });
+
+const showRandom = (data) => {
+    randomList = data.recipes;
+    let randomHeading = document.createElement('h2');
+    randomHeading.classList.add('secondary-heading');
+    if(randomTag === 'cookies,cakes' || randomTag === 'dessert') {
+        tagName = 'In the mood for something sweet?'
+    } else if(randomTag === 'snack'|| randomTag == 'finger food') {
+        tagName = 'Light Bites'
+    } else if(randomTag === 'cocktails') {
+        tagName = 'Cocktail Hour'
+    } else if(randomTag === 'lunch' || randomTag === 'dinner') {
+        tagName = 'Main Course'
+    }
+    console.log(tagName)
+    randomHeading.textContent = tagName;
+    randomContainer.appendChild(randomHeading);
+    for(let i=0; i<randomList.length; i++){
+        recipeCard = document.createElement('div');
+        recipeCard.classList.add('recipe-card');
+        //three parts of the recipe card
+        let cardHead = document.createElement('div'); 
+        let cardBody = document.createElement('div');
+        let cardFooter = document.createElement('div');
+        //recipe image for the cardHead
+        let randomImage = document.createElement('img');
+        randomImage.classList.add('recipe-img');
+        randomImage.src = randomList[i].image;
+        //recipe name
+        let randomName = document.createElement('h3');
+        randomName.textContent = randomList[i].title;
+        randomName.classList.add('recipe-heading');
+        //classes to the various elements for styling
+        cardHead.classList.add('recipe-head');
+        cardBody.classList.add('recipe-body');
+        //capture the recipe id for displaying a single recipe on click
+        recipeCard.dataset.id = randomList[i].id;
+        //appending relevant to parent elements
+        randomContainer.appendChild(recipeCard);
+        recipeCard.appendChild(cardHead);
+        recipeCard.appendChild(cardBody);
+        recipeCard.appendChild(cardFooter);
+        cardBody.appendChild(randomName);
+        cardHead.appendChild(randomImage);
+    }
+    console.log(randomList);
+    getID(id);
+}
 
 const displayRecipes = (data) => {
     recipeContainer.innerHTML = '';
@@ -180,6 +237,7 @@ const getID = (id) => {
             id = recipeCard.dataset.id;
             recipeOne.classList.remove('hide');
             recipeContainer.classList.add('hide');
+            randomContainer.classList.add('hide');
             singleRecipe(id)
                 .then(recipe => showRecipe(recipe))
                 .catch(err => console.log(err));
@@ -188,10 +246,20 @@ const getID = (id) => {
     console.log(id);
 }
 
-const showRandomRecipes = async () => {
+//get random recipes on page load
+document.addEventListener('DOMContentLoaded', () => {
+    //array of keywords for random recipes
+    const randomArr = ['breakfast', 'lunch', 'cocktail', 'cookies,cake', 'dessert', 'dinner', 'snack'];
+    randomTag = randomArr[Math.floor(Math.random()*randomArr.length)];
+    randomRecipes(randomTag)
+        .then(data => showRandom(data))
+        .catch(err => console.log(err));
+});
+
+const showRandomRecipes = async (randomTag) => {
     //calling api function in here
-    const recipeList = await randomRecipes();
-    return { recipeList: recipeList }
+    const randomList = await randomRecipes(randomTag);
+    return { randomList: randomList }
 }
 
 const allRecipes = async (recipeName, diet, meal, cuisine, ingredients) => {
@@ -200,87 +268,81 @@ const allRecipes = async (recipeName, diet, meal, cuisine, ingredients) => {
     return { recipeList: recipeList }
 }
 
-addBtn.addEventListener("click", () => {
-    if(ingredient.value !== '' & ingredients.length < 3){
-        ingredients.push(ingredient.value.trim());
-        badge = document.createElement('div');
-        let undo = document.createElement('button');
-        undo.classList.add('delete');
-        undo.setAttribute("type", "button");
-        undo.textContent = 'X'
-        ingredientList.appendChild(badge);
-        badge.classList.add('ingredient-badge');
-        badge.textContent = `${ingredient.value}`;
-        badge.appendChild(undo);
-        ingredient.value = '';
-    }
-});
+// addBtn.addEventListener("click", () => {
+//     if(ingredient.value !== '' & ingredients.length < 3){
+//         ingredients.push(ingredient.value.trim());
+//         badge = document.createElement('div');
+//         let undo = document.createElement('button');
+//         undo.classList.add('delete');
+//         undo.setAttribute("type", "button");
+//         undo.textContent = 'X'
+//         ingredientList.appendChild(badge);
+//         badge.classList.add('ingredient-badge');
+//         badge.textContent = `${ingredient.value}`;
+//         badge.appendChild(undo);
+//         ingredient.value = '';
+//     }
+// });
 
-document.addEventListener('DOMContentLoaded', () => {
-    randomRecipes()
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
-});
+// filterForm.addEventListener("submit", e => {
+//     e.preventDefault();
+//     let diet = '';
+//     let meal = '';
+//     let cuisine = '';
+//     let ingredientStr = '';
+//     ingredientList.innerHTML = '';
 
-filterForm.addEventListener("submit", e => {
-    e.preventDefault();
-    let diet = '';
-    let meal = '';
-    let cuisine = '';
-    let ingredientStr = '';
-    ingredientList.innerHTML = '';
+//     //get the recipe name from the user
+//     const recipeName = document.querySelector('#recipe-search').value.trim();
+//     if(ingredients.length > 1) {
+//         ingredientStr = ingredients.join(',');
+//     }
 
-    //get the recipe name from the user
-    const recipeName = document.querySelector('#recipe-search').value.trim();
-    if(ingredients.length > 1) {
-        ingredientStr = ingredients.join(',');
-    }
+//     for(let i=0; i<allergenList.length; i++) {
+//         if(allergenList[i].checked) {
+//             allergens.push(allergenList[i].value);
+//         }
+//     }
+//     allergen = allergens.join(',');
 
-    for(let i=0; i<allergenList.length; i++) {
-        if(allergenList[i].checked) {
-            allergens.push(allergenList[i].value);
-        }
-    }
-    allergen = allergens.join(',');
+//     for(let i=0; i<dietType.length; i++) {
+//         if(dietType[i].checked) {
+//             diet = dietType[i].value;
+//         }
+//     }
 
-    for(let i=0; i<dietType.length; i++) {
-        if(dietType[i].checked) {
-            diet = dietType[i].value;
-        }
-    }
+//     // for(let i=0; i<mealType.length; i++) {
+//     //     if(mealType[i].checked) {
+//     //         meal = mealType[i].value;
+//     //     }
+//     // }
 
-    // for(let i=0; i<mealType.length; i++) {
-    //     if(mealType[i].checked) {
-    //         meal = mealType[i].value;
-    //     }
-    // }
+//     for(let i=0; i<cuisineType.length; i++) {
+//         if(cuisineType[i].checked) {
+//             cuisines.push(cuisineType[i].value);
+//         }
+//     }
+//     cuisine = cuisines.join(',');
 
-    for(let i=0; i<cuisineType.length; i++) {
-        if(cuisineType[i].checked) {
-            cuisines.push(cuisineType[i].value);
-        }
-    }
-    cuisine = cuisines.join(',');
+//     filterForm.reset();
 
-    filterForm.reset();
+//     allRecipes(recipeName, diet, meal, cuisine, ingredientStr)
+//         .then(data => displayRecipes(data))
+//         .catch(err => console.log(err));
+// });
 
-    allRecipes(recipeName, diet, meal, cuisine, ingredientStr)
-        .then(data => displayRecipes(data))
-        .catch(err => console.log(err));
-});
-
-addBtn.addEventListener("click", () => {
-    if(ingredient.value !== '' & ingredients.length < 3){
-        ingredients.push(ingredient.value.trim());
-        badge = document.createElement('div');
-        let undo = document.createElement('button');
-        undo.classList.add('delete');
-        undo.setAttribute("type", "button");
-        undo.textContent = 'X'
-        ingredientList.appendChild(badge);
-        badge.classList.add('ingredient-badge');
-        badge.textContent = `${ingredient.value}`;
-        badge.appendChild(undo);
-        ingredient.value = '';
-    }
-});
+// addBtn.addEventListener("click", () => {
+//     if(ingredient.value !== '' & ingredients.length < 3){
+//         ingredients.push(ingredient.value.trim());
+//         badge = document.createElement('div');
+//         let undo = document.createElement('button');
+//         undo.classList.add('delete');
+//         undo.setAttribute("type", "button");
+//         undo.textContent = 'X'
+//         ingredientList.appendChild(badge);
+//         badge.classList.add('ingredient-badge');
+//         badge.textContent = `${ingredient.value}`;
+//         badge.appendChild(undo);
+//         ingredient.value = '';
+//     }
+// });
