@@ -150,7 +150,6 @@ const showRandom = (data) => {
         //three parts of the recipe card
         let cardHead = document.createElement('div'); 
         let cardBody = document.createElement('div');
-        let cardFooter = document.createElement('div');
         //recipe image for the cardHead
         let randomImage = document.createElement('img');
         randomImage.classList.add('recipe-img');
@@ -168,7 +167,6 @@ const showRandom = (data) => {
         randomContainer.appendChild(recipeCard);
         recipeCard.appendChild(cardHead);
         recipeCard.appendChild(cardBody);
-        recipeCard.appendChild(cardFooter);
         cardBody.appendChild(randomName);
         cardHead.appendChild(randomImage);
     }
@@ -188,12 +186,10 @@ const displayRecipes = (data) => {
         //three parts of the recipe card
         let cardHead = document.createElement('div'); 
         let cardBody = document.createElement('div');
-        let cardFooter = document.createElement('div'); 
 
         //classes to the various elements for styling
         cardHead.classList.add('recipe-head');
         cardBody.classList.add('recipe-body');
-        cardFooter.classList.add('recipe-footer');
 
         //recipe image & source for the cardHead
         let image = document.createElement('img');
@@ -201,10 +197,6 @@ const displayRecipes = (data) => {
 
         //recipe name & author for the card body
         let name = document.createElement('h3');
-
-        //paragraphs for cardFooter
-        let cuisineInfo = document.createElement('p');
-        let courseInfo = document.createElement('p');
 
         image.classList.add('recipe-img');
         name.classList.add("recipe-heading");
