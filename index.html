@@ -8,30 +8,22 @@
     <title>The Impatient Chef</title>
 </head>
 <body>
-    <nav id="navigation">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-            <div class="right-nav">
-                <li class="nav-item icon"><a class="nav-link" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                <li class="nav-item icon"><a class="nav-link" href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                <li class="nav-item icon"><a class="nav-link" href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                <li class="nav-item icon"><a class="nav-link" href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            </div>
-        </ul>
-    </nav>
-    <header class="header">
-        <h1 class="main-heading">The Impatient Chef</h1>   
-    </header>
     <main class="main-container">
-        <!-- <div class="side-filter">
-            <form action="#" class="search-filters">
+        <header class="header">
+            <h1 class="main-heading">The Impatient Chef</h1>  
+            <form action="#" class="name-form">
                 <div class="recipe-title">
-                    <h3 class="filter-heading">Recipe Name</h3>
                     <div class="recipe-name">
-                        <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipes">
+                        <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipe by name or keyword">
                     </div>
-                </div>
+                    <button type="button" class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div> 
+            </form>
+        </header>
+        <div class="side-filter">
+            <form action="#" class="search-filters">
                 <div class="ingredients">
                     <h3 class="filter-heading">
                         By Ingredients <br> <span class="ingredient-info">(max 3 ingredients)</span>
@@ -309,7 +301,7 @@
                 </div>
                 <button class="filter-btn">Filter recipes</button>
             </form>
-        </div> -->
+        </div> 
         <div class="random-container"></div>
         <div class="recipe-container hide">
         </div>
@@ -360,6 +352,9 @@
                     <ol class="instruction-list"></ol>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            footer
         </div>
     </main>
     <script src="static/js/recipes.js"></script>
