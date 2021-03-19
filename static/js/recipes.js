@@ -2,9 +2,9 @@ const apiKey = "7dccf009d1d3499ab7f9fa0b154fdc3d";
 
 
 
-const randomRecipes = async(randomTag) => {
+const randomRecipes = async() => {
     const url = `https://api.spoonacular.com/recipes/random`;
-    const query = `?apiKey=${apiKey}&tags=${randomTag}&limitLicense=true&maxReadyTime=59&number=12&sortDirection='desc`;
+    const query = `?apiKey=${apiKey}&limitLicense=true&maxReadyTime=59&number=12&sortDirection='desc`;
     const response = await fetch(url+query);
     const data = await response.json();
 

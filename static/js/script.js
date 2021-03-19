@@ -34,8 +34,6 @@ const recipeAuthor = document.querySelector('.recipe-author');
 const singleRecipeIngredients = document.querySelector('.ingredient-list');
 const instructionList = document.querySelector('.instruction-list');
 
-let randomTag = '';
-let tagName = '';
 // let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
 let ingredients = [];
@@ -132,17 +130,7 @@ const showRandom = (data) => {
     randomList = data.recipes;
     let randomHeading = document.createElement('h2');
     randomHeading.classList.add('secondary-heading');
-    if(randomTag === 'cookies,cakes' || randomTag === 'dessert') {
-        tagName = 'In the mood for something sweet?'
-    } else if(randomTag === 'snack'|| randomTag == 'finger food') {
-        tagName = 'Light Bites'
-    } else if(randomTag === 'cocktails') {
-        tagName = 'Cocktail Hour'
-    } else if(randomTag === 'lunch' || randomTag === 'dinner') {
-        tagName = 'Main Course'
-    }
-    console.log(tagName)
-    randomHeading.textContent = tagName;
+    randomHeading.textContent = `Today's Recipes`;
     randomContainer.appendChild(randomHeading);
     for(let i=0; i<randomList.length; i++){
         recipeCard = document.createElement('div');
@@ -240,17 +228,14 @@ const getID = (id) => {
 
 //get random recipes on page load
 document.addEventListener('DOMContentLoaded', () => {
-    //array of keywords for random recipes
-    const randomArr = ['breakfast', 'lunch', 'cocktail', 'cookies,cake', 'dessert', 'dinner', 'snack'];
-    randomTag = randomArr[Math.floor(Math.random()*randomArr.length)];
-    randomRecipes(randomTag)
+    randomRecipes()
         .then(data => showRandom(data))
         .catch(err => console.log(err));
 });
 
-const showRandomRecipes = async (randomTag) => {
+const showRandomRecipes = async () => {
     //calling api function in here
-    const randomList = await randomRecipes(randomTag);
+    const randomList = await randomRecipes();
     return { randomList: randomList }
 }
 
