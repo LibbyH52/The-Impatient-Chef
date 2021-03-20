@@ -21,7 +21,9 @@ const recipeOne = document.querySelector('#single-recipe')
 
 // const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
-
+const formBtn = document.querySelector('.burger-btn');
+const openForm = document.querySelector('.open');
+const closeForm = document.querySelector('.close');
 
 
 //singleRecipe variables
@@ -44,6 +46,19 @@ let id = 0;
 let allergens = [];
 let cuisines = [];
 
+
+//open/ close filter form on smaller screens
+openForm.addEventListener('click', () => {
+    filterForm.style.display = 'flex';
+    closeForm.classList.remove('hide');
+    openForm.classList.add('hide');
+});
+
+closeForm.addEventListener('click', () => {
+    filterForm.style.display = 'none';
+    openForm.classList.remove('hide');
+    closeForm.classList.add('hide');
+});
 
 const showRecipe = (recipe) => {
     let recipeInfo = recipe.oneRecipe;
