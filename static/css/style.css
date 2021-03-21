@@ -59,12 +59,13 @@ body{
 
 /***********************Heading Styles*/
 .main-heading {
-    font-size: 1.5rem;
-    color: #08182b;
+    font-size: 2.5rem;
+    color: #f4f4f4;
     text-align: center;
     letter-spacing: 1px;
     font-variant: small-caps;
     margin: 0 auto;
+    font-weight: 900;
 }
 
 .secondary-heading{
@@ -139,8 +140,8 @@ body{
 
 /************************Header Styles*/
 .header{
-    background-image: linear-gradient(to right, rgba(244, 244, 244, 0.3), 
-                        rgba(241, 241, 241, 0.1)),
+    background-image: linear-gradient(to bottom right, rgba(8, 24, 43, .5), 
+                        rgba(8, 24, 43, .3)),
                         url('../img/cooking.jpg');
     background-size: cover;
     background-position: center center;
@@ -154,11 +155,13 @@ body{
 }
 
 .name-form{
-    width: 60%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .recipe-name{
-    display: inline-block;
+    width: 95%;
+    margin: 0 auto;
 }
 
 input#recipe-search{
@@ -167,6 +170,7 @@ input#recipe-search{
     padding: 1.25rem 1rem;
     position: relative;
     font-size: 1.5rem;
+    width: 100%;
 }
 
 .search-recipes{
@@ -192,7 +196,7 @@ input#recipe-search{
     display: grid;
     box-sizing: border-box;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(12, min-content);
+    grid-template-rows: repeat(13, min-content);
     grid-column: 1/-1;
 }
 
@@ -290,6 +294,8 @@ input#recipe-search{
     display: inline-block;
     height: 2.5rem;
     width: 2.5rem;
+    margin-left: -3.5rem;
+    position: relative;
 }
 
 .burger-btn{
@@ -303,6 +309,12 @@ input#recipe-search{
     color: #f4f4f4;
     align-self: flex-end;
     margin-right: 2rem;
+    transition: scale .2s ease-in-out;
+}
+
+.search-btn:hover{
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 
@@ -321,7 +333,7 @@ input#recipe-search{
 .main-container{
     background: #f4f4f4;
     display: grid;
-    grid-template-rows: 8vh 50vh repeat(2, min-content);
+    grid-template-rows: 8vh 50vh repeat(3, min-content);
     grid-template-columns: repeat(10, 1fr);
 }
 
@@ -337,13 +349,6 @@ input#recipe-search{
     width: 100%;
     color: #08182b;
     position: relative;
-}
-
-.recipe-title {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 0 auto;
 }
 
 .search-filters{
@@ -686,6 +691,10 @@ input#recipe-search{
 
 /************************************Media Queries*/
 @media screen and (min-width: 430px) {
+    .recipe-name{
+        width: 80%;
+    }
+
     .recipe-container,
     .random-container{
         grid-column: 3/9;
@@ -711,6 +720,10 @@ input#recipe-search{
 }
 
 @media screen and (min-width: 550px){
+    .name-form{
+        width: 70%;
+    }
+
     .recipe-container,
     .random-container{
         grid-column: 1/-1;
@@ -783,7 +796,7 @@ input#recipe-search{
 
  @media screen and (min-width: 620px) {
      .main-container{
-         grid-template-rows: 40vh repeat(2, min-content);
+         grid-template-rows: 40vh repeat(3, min-content);
      }
 
      .side-filter{
@@ -816,7 +829,6 @@ input#recipe-search{
     .recipe-container,
     .random-container{
         grid-column: 2/-1;
-        grid-row: 2/3;
     }
 
     .close-btn{
@@ -838,20 +850,24 @@ input#recipe-search{
     }
 
     .footer{
-        grid-row: 3/-1;
         grid-column: 2/-1;
     }
 }
 
 @media screen and (min-width: 780px) {
     .header{
-        grid-column: 3/-1;
+        grid-column: 2/-1;
+    }
+
+    .name-form{
+        width: 70%;
     }
     
     .recipe-container,
     .random-container{
         grid-column: 2/-1;
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(7, min-content);
         grid-gap: 1rem;
     }
 
@@ -892,11 +908,20 @@ input#recipe-search{
 }
 
 @media screen and (min-width: 900px) {
+    .main-container{
+        grid-template-rows: 70vh repeat(3, min-content);
+    }
+
+
     .header,
     .recipe-container,
     .random-container,
     .footer{
         grid-column: 3/-1;
+    }
+
+    .name-form{
+        width: 50%;
     }
 
     .side-filter{
@@ -906,6 +931,7 @@ input#recipe-search{
     .recipe-container,
     .random-container{
         grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, min-content);
     }
 
     .single-container{
@@ -987,9 +1013,14 @@ input#recipe-search{
 }
 
 @media screen and (min-width: 1000px) {
+    .name-form{
+        width: 45%;
+    }
+
     .recipe-container,
     .random-container{
         grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, min-content);
         grid-gap: .5rem;
     }
 
