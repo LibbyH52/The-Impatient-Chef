@@ -1,5 +1,7 @@
 const ingredientForm = document.querySelector('.ingredient-form');
 
+//forms and form buttons
+const nameForm = document.querySelector('.name-form');
 const filterForm = document.querySelector('.search-filters');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
@@ -25,6 +27,7 @@ const formBtn = document.querySelector('.burger-btn');
 const openForm = document.querySelector('.open');
 const closeForm = document.querySelector('.close');
 
+const randomButton = document.querySelector('.random-btn');
 
 //singleRecipe variables
 const dietInfo = document.querySelector('.diet-details');
@@ -41,6 +44,7 @@ let recipeList = [];
 let ingredients = [];
 let badge = '';
 let id = 0;
+let recipeName = '';
 
 //arrays for pushing allergen & cuisine selection
 let allergens = [];
@@ -179,6 +183,11 @@ const showRandom = (data) => {
 
 const displayRecipes = (data) => {
     recipeContainer.innerHTML = '';
+    let resultsHeading = document.createElement('h2');
+    recipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1);
+    resultsHeading.classList.add('secondary-heading');
+    resultsHeading.textContent =`${recipeName} Recipes`
+    recipeContainer.appendChild(resultsHeading);
     recipeList = data.recipeList.results;
     for(let i=0; i<recipeList.length; i++){
         recipeCard = document.createElement('div');
@@ -254,9 +263,11 @@ const showRandomRecipes = async () => {
     return { randomList: randomList }
 }
 
-const allRecipes = async (recipeName, diet, meal, cuisine, ingredients) => {
+const allRecipes = async (recipeName) => {
     //calling api function in here
-    const recipeList = await getRecipes(recipeName, diet, meal, cuisine,ingredients);
+    //, diet, meal, cuisine, ingredients
+    //, diet, meal, cuisine,ingredients
+    const recipeList = await getRecipes(recipeName);
     return { recipeList: recipeList }
 }
 
@@ -284,8 +295,6 @@ const allRecipes = async (recipeName, diet, meal, cuisine, ingredients) => {
 //     let ingredientStr = '';
 //     ingredientList.innerHTML = '';
 
-//     //get the recipe name from the user
-//     const recipeName = document.querySelector('#recipe-search').value.trim();
 //     if(ingredients.length > 1) {
 //         ingredientStr = ingredients.join(',');
 //     }
@@ -318,10 +327,19 @@ const allRecipes = async (recipeName, diet, meal, cuisine, ingredients) => {
 
 //     filterForm.reset();
 
-//     allRecipes(recipeName, diet, meal, cuisine, ingredientStr)
-//         .then(data => displayRecipes(data))
-//         .catch(err => console.log(err));
-// });
+//capture recipeName from user and send request to API
+nameForm.addEventListener('submit', e => {
+    e.preventDefault();
+    //get the recipe name from the user
+    recipeName = document.querySelector('#recipe-search').value.trim();
+    console.log(recipeName);
+    recipeContainer.classList.remove('hide');
+    nameForm.reset();
+    allRecipes(recipeName)
+        .then(data => displayRecipes(data))
+        .catch(err => console.log(err));
+})
+
 
 // addBtn.addEventListener("click", () => {
 //     if(ingredient.value !== '' & ingredients.length < 3){
