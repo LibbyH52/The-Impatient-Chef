@@ -32,11 +32,11 @@
             <form class="search-filters">
                 <div class="ingredients">
                     <h3 class="filter-heading">
-                        By Ingredients <br> <span class="ingredient-info">(max 3 ingredients)</span>
+                        By Ingredients <span class="ingredient-info"></span>
                     </h3>
                     <div class="ingredient-info">
                         <div class="ingredient-input">
-                            <input type="text" name="ingredient" class="ingredient-search" placeholder="flour">
+                            <input type="text" name="ingredient" class="ingredient-search" placeholder="Main Ingredient(s) - up to three">
                             <button type="button" class="add-btn"><i class="fas fa-plus"></i></button>
                         </div>
                         <span id="ingredient-list"></span>
@@ -218,7 +218,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="filter-group allergens">
+                <div class="allergens filter-group">
                     <h3 class="filter-heading">Allergens</h3>
                     <div class="checkbox-input">
                         <input type="checkbox" class="check-option" id="allergen1" name="allergen" value="Dairy">
@@ -310,7 +310,6 @@
         </div> 
         <div class="recipe-container"></div>
         <div class="random-container"></div>
-        </div>
         <div  class="single-container hide" id="single-recipe">
             <button class="close-btn">Back to Search Results</button>
             <div class="single-header">
@@ -360,7 +359,7 @@
             </div>
         </div>
         <div class="footer">
-            footer
+           Footer
         </div>
     </main>
     <script src="static/js/recipes.js"></script>
