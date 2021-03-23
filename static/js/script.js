@@ -19,7 +19,8 @@ const addBtn = document.querySelector('.add-btn');
 
 const ingredientList = document.querySelector('#ingredient-list');
 
-const recipeOne = document.querySelector('#single-recipe')
+const recipeOne = document.querySelector('#single-recipe');
+const recipeCuisine = document.querySelector('.cuisine-list');
 
 // const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
@@ -85,6 +86,8 @@ const showRecipe = (recipe) => {
     let servingSize = document.querySelector('.serving-size');
     servingSize.textContent = recipeInfo.servings;
     let diets = recipeInfo.diets;
+    let cuisineList = recipeInfo.cuisines.join(' ');
+    recipeCuisine.textContent = cuisineList;
     let nutrientInfo = recipeInfo.nutrition.nutrients;
 
     for (let i=0; i<nutrientInfo.length; i++){
@@ -139,6 +142,7 @@ closeBtn.addEventListener("click", () => {
     singleImg.innerHTML = '';
     recipeHeading.innerHTML = '';
     recipeAuthor.innerHTML = '';
+    recipeCuisine.innerHTML = '';
     singleRecipeIngredients.innerHTML = '';
     instructionList.innerHTML = '';
     nutritionInfo.innerHTML = '';
