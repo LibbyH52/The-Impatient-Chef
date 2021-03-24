@@ -19,8 +19,6 @@ const addBtn = document.querySelector('.add-btn');
 
 const ingredientList = document.querySelector('#ingredient-list');
 
-const recipeOne = document.querySelector('#single-recipe');
-const recipeCuisine = document.querySelector('.cuisine-list');
 
 // const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
@@ -31,7 +29,10 @@ const closeForm = document.querySelector('.close');
 const randomButton = document.querySelector('.random-btn');
 
 //singleRecipe variables
-const dietInfo = document.querySelector('.diet-details');
+const recipeOne = document.querySelector('#single-recipe');
+const recipeCuisine = document.querySelector('.cuisine-list');
+const recipeDish = document.querySelector('.meal-list');
+const dietInfo = document.querySelector('.diet-list');
 const nutritionInfo = document.querySelector('.nutrient-info');
 const singleImg = document.querySelector('.single-img');
 const singleDetails = document.querySelector('.single-details');
@@ -85,11 +86,27 @@ const showRecipe = (recipe) => {
     readyIn.textContent = `${recipeInfo.readyInMinutes} minutes`;
     let servingSize = document.querySelector('.serving-size');
     servingSize.textContent = recipeInfo.servings;
-    let diets = recipeInfo.diets;
-    let cuisineList = recipeInfo.cuisines.join(' ');
-    recipeCuisine.textContent = cuisineList;
-    let nutrientInfo = recipeInfo.nutrition.nutrients;
 
+    if(recipeInfo.dishTypes > 0) {
+        let dishList = recipeInfo.dishTypes.join(', ');
+        recipeDish.textContent = dishList;
+    } else {
+        recipeDish.textContent = 'Not specified.'
+    }
+    if(recipeInfo.cuisines > 0) {
+        let cuisineList = recipeInfo.cuisines.join(',');
+        recipeCuisine.textContent = cuisineList;
+    } else {
+        recipeCuisine.textContent = 'Not specified.'
+    }
+    if(recipeInfo.diets > 0){
+        let diets = recipeInfo.diets.join(', ');
+        dietInfo.textContent = diets
+    } else {
+        dietInfo.textContent = 'Not available'
+    }
+
+    let nutrientInfo = recipeInfo.nutrition.nutrients;
     for (let i=0; i<nutrientInfo.length; i++){
         if(nutrientInfo[i].name === 'Calories' ||nutrientInfo[i].name === 'Carbohydrates' || nutrientInfo[i].name==='Fat' ||nutrientInfo[i].name==='sugar'|| nutrientInfo[i].name==='Protein'||nutrientInfo[i].name==='Fiber' || nutrientInfo[i].name==='salt' ) {
             if(nutrientInfo[i].name === 'Carbohydrates'){
@@ -107,14 +124,6 @@ const showRecipe = (recipe) => {
             nutrition.appendChild(nutrientAmount);
             nutritionInfo.appendChild(nutrition);
         }
-    }
-
-
-    for(let i=0; i<diets.length; i++){
-        let dietTag = document.createElement('span');
-        dietTag.classList.add('free-from');
-        dietTag.textContent = diets[i];
-        dietInfo.appendChild(dietTag);
     }
 
     let recipeIngredients = recipeInfo.extendedIngredients;
