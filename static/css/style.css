@@ -1141,3 +1141,9 @@ input#recipe-search{
         grid-column: 6/-1;
     }
 }
+
+@media screen and (min-width: 1200px) {
+    .single-container{
+        grid-column: 3/10;
+    }
+}
