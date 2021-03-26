@@ -158,7 +158,7 @@ input#recipe-search{
 
 .main-container{
     display: grid;
-    grid-template-rows: min-content 70vh repeat(2, min-content);
+    grid-template-rows: min-content 30vh repeat(2, min-content);
     grid-template-columns: repeat(10, 1fr);
 } 
 
@@ -184,8 +184,8 @@ input#recipe-search{
     cursor: pointer;
 } 
 
-.recipe-card:hover .recipe-img{
-    transform: scale(1.4);
+.recipe-img:hover{
+    transform: scale(1.5);
 }
 
 .recipe-head {
@@ -206,7 +206,9 @@ input#recipe-search{
     align-items: center;
     background:rgba(69, 217, 253,0.4);
     padding: 0;
-    height: 4rem;
+    height: 6rem;
+    padding: 1rem 0;
+    box-sizing: border-box;
 }
 
 .recipe-heading{
@@ -235,6 +237,7 @@ input#recipe-search{
     background: #f4f4f4;
     border: 2px solid #f4f4f4;
     border-radius: 1.5rem;
+    box-shadow: 1px 2px 3px rgba(238, 37, 96, .6);
     cursor: pointer;
     margin: 0 auto;
     font-size: 1.1rem;
@@ -246,6 +249,7 @@ input#recipe-search{
 
 .filter-btn:hover{
     transform: scale(1.1);
+    box-shadow: 2px 3px 6px rgba(238, 37, 96, .8);
 }
 
 .filter-btn:active{
@@ -286,6 +290,8 @@ input#recipe-search{
     align-self: flex-start;
     margin-right: 2rem;
     transition: scale .2s ease-in-out;
+    left: 0;
+    top: 0;
 }
 
 .search-btn:hover{
@@ -439,7 +445,7 @@ input#recipe-search{
 
 .single-heading {
     font-variant: small-caps;
-    text-align: center;
+    text-align: left;
     width: 100%;
     padding-bottom: 1rem; 
     grid-column: 2/10;
@@ -653,13 +659,6 @@ input#recipe-search{
     display: none;
 }
 
-.footer{
-    background:#f4f4f4;
-    color: #08182b;
-    grid-column: 1/-1;
-    padding: 4rem 0;
-}
-
 /************************************Media Queries*/
 @media screen and (min-width: 430px) {
     .recipe-name{
@@ -796,11 +795,10 @@ input#recipe-search{
 }
 
  @media screen and (min-width: 620px) {
-    .burger-btn{
-        top: -1rem;
-        left: -2.5rem;
-     }
-
+    .main-container{
+        grid-template-rows: min-content 50vh repeat(2, min-content);;
+    }
+    
     .search-filters {
          width: 90vw;
          top: 0;
@@ -847,12 +845,50 @@ input#recipe-search{
 }
 
 @media screen and (min-width: 780px) {
-  .name-form{
+    .main-container{
+        grid-template-rows: 60vh repeat(3, min-content);
+    }
+
+    .header{
+        grid-row: 1/2;
+        grid-column: 1/-1;
+    }
+
+    .side-filter{
+        grid-row: 2/-1;
+        grid-column: 1/3;
+    }
+
+    .search-filters{
+        width: 90%;
+    }
+
+    .footer{
+        grid-column: 3/-1;
+    }
+
+    .ingredients{
+        width: 80%;
+        margin: 0;
+    }
+
+    .ingredient-info{
+        width: 90%;
+        margin: 0;
+    }
+
+    .filter-group{
+        border: none;
+        flex: 0 0 80%;
+        margin: 0;
+    }
+
+    .name-form{
         width: 70%;
     }
 
     .filter-btn{
-        width: 30%;
+        flex: 0 0 50%;
     }
     
     .recipe-container,
@@ -860,15 +896,12 @@ input#recipe-search{
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(7, min-content);
         grid-gap: 1rem;
+        grid-column: 3/-1;
     }
 
     .footer{
-        grid-column: 2/-1;
+        grid-column: 3/-1;
     }
-
-    /* .single-container{
-        grid-column: 2/10;
-    } */
 } 
 
 @media screen and (min-width: 840px) {
@@ -876,18 +909,51 @@ input#recipe-search{
         width: 50%;
     }
 
+    .burger-btn{
+        display: none;
+    }
+    
+    .side-filter{
+        grid-column: 1/4;
+    }
+
+    .search-filters{
+        display: flex;
+        margin: 0;
+        width: 100%;
+    }
+
+    .footer{
+        grid-row: -1/-1;
+    }
+
     .recipe-container,
     .random-container{
-        grid-column: 1/-1;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, min-content);
+        grid-column: 4/-1;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, min-content);
         grid-gap: .1rem;
+    }
+
+    .footer{
+        grid-column: 4/-1;
     }
 
     .ingredients>h3.filter-heading,
     .ingredient-info{
-        width: 50%;
-        margin: 0 auto;
+        width: 100%;
+    }
+
+    .ingredients{
+        flex: 1;
+    }
+
+    .add-btn{
+        margin-left: -1.25rem;
+    }
+
+    .filter-btn{
+        flex: 0 0 75%;
     }
 
     .single-details{
@@ -935,13 +1001,10 @@ input#recipe-search{
         width: 50%;
     }
 
-    /* .main-container{
-        grid-template-rows: 80vh repeat(3, minmax(6rem, min-content));
-    } */
-
-    .search-filters{
-        width: 60vw;
-    }
+    .recipe-container,
+    .random-container{
+        grid-column: 4/10;
+    } 
 
     .single-container{
        grid-column: 1/10;
@@ -1035,6 +1098,10 @@ input#recipe-search{
 } 
 
 @media screen and (min-width: 1000px) {
+    .header{
+        grid-column: 4/-1;
+    }
+    
     .name-form{
         width: 45%;
     }
@@ -1043,29 +1110,25 @@ input#recipe-search{
         width: 30%;
     }
 
-    /* .header,
-    .footer{
-        grid-column: 2/-1;
-    } */
-
-    .search-filters{
-        width: 90vw;
+    .filter-group{
+        flex: 0 0 80%;
     }
 
-    .filter-group{
-        flex: 0 0 24%;
+    .side-filter{
+        grid-column: 1/4;
+        grid-row: 1/-1;
     }
 
     .recipe-container,
     .random-container{
-        /* grid-column: 2/-1; */
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, min-content);
-        grid-gap: .2rem;
+        grid-column: 4/-1;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 15vh repeat(4, min-content);
+        grid-gap: 1rem;
     }
 
     .secondary-heading{
-        font-size: 3rem;
+        font-size: 4rem;
     }
 
    .single-container{
@@ -1099,6 +1162,22 @@ input#recipe-search{
 }
 
 @media screen and (min-width: 1200px) {
+    .header {
+        grid-column: 3/-1;
+    }
+    
+    .side-filter{
+        grid-column: 1/3;
+    }
+
+    .recipe-container,
+    .random-container{
+        grid-column: 3/-1;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, min-content);
+        grid-gap: 1rem;
+    }
+
     .single-container{
         grid-column: 3/9;
     }
