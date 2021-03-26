@@ -1123,7 +1123,7 @@ input#recipe-search{
     .random-container{
         grid-column: 4/-1;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 15vh repeat(4, min-content);
+        grid-template-rows: repeat(4, min-content);
         grid-gap: 1rem;
     }
 
