@@ -231,6 +231,10 @@ input#recipe-search{
     width: 100%;
 }
 
+.single-img>img.recipe-img:hover{
+    transform: scale(1);
+}
+
 /************************Button Styles*/
 .filter-btn{
     display: block;
@@ -846,11 +850,11 @@ input#recipe-search{
 
 @media screen and (min-width: 780px) {
     .main-container{
-        grid-template-rows: 60vh repeat(3, min-content);
+        grid-template-rows: 50vh repeat(3, min-content);
     }
 
     .header{
-        grid-row: 1/2;
+        grid-row: 1/3;
         grid-column: 1/-1;
     }
 
@@ -921,10 +925,6 @@ input#recipe-search{
         display: flex;
         margin: 0;
         width: 100%;
-    }
-
-    .footer{
-        grid-row: -1/-1;
     }
 
     .recipe-container,
