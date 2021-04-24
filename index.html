@@ -11,14 +11,6 @@
     <main class="main-container">
         <header class="header">
             <h1 class="main-heading">The Impatient Chef</h1>  
-            <form class="name-form">
-                <div class="recipe-name">
-                    <input type="search" name="recipe-search" id="recipe-search" placeholder="search recipe by name or keyword">
-                    <button type="button" class="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </form>
         </header>
         <div class="side-filter">
             <button type="button" class="burger-btn">
@@ -30,17 +22,8 @@
                 </span>  
             </button type="button">
             <form class="search-filters">
-                <div class="ingredients">
-                    <h3 class="filter-heading">
-                        By Ingredients <span class="ingredient-info"></span>
-                    </h3>
-                    <div class="ingredient-info">
-                        <div class="ingredient-input">
-                            <input type="text" name="ingredient" class="ingredient-search" placeholder="Main Ingredient(s) - up to three">
-                            <button type="button" class="add-btn"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <span id="ingredient-list"></span>
-                    </div>
+                <div class="recipe-name">
+                    <input type="search" name="recipe-name" class="name-search" id="name" placeholder="search recipe by name or keyword">
                 </div>
                 <div class="diet-type filter-group">
                     <h3 class="filter-heading">Diet Type</h3>
@@ -221,49 +204,49 @@
                 <div class="allergens filter-group">
                     <h3 class="filter-heading">Allergens</h3>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen1" name="allergen" value="Dairy">
+                        <input type="checkbox" class="check-option" id="allergen1" name="allergen" value="dairy">
                         <label class="filter-label" for="allergen1"> 
                             <span class="check-item"></span>
                             Dairy
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen2" name="allergen" value="Egg">
+                        <input type="checkbox" class="check-option" id="allergen2" name="allergen" value="eggs">
                         <label class="filter-label" for="allergen2"> 
                             <span class="check-item"></span>
                             Egg
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen3" name="allergen" value="Gluten">
+                        <input type="checkbox" class="check-option" id="allergen3" name="allergen" value="gluten">
                         <label class="filter-label" for="allergen3"> 
                             <span class="check-item"></span>
                             Gluten
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen4" name="allergen" value="Grain">
+                        <input type="checkbox" class="check-option" id="allergen4" name="allergen" value="grain">
                         <label class="filter-label" for="allergen4"> 
                             <span class="check-item"></span>
                             Grain
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen5" name="allergen" value="Peanut">
+                        <input type="checkbox" class="check-option" id="allergen5" name="allergen" value="peanut">
                         <label class="filter-label" for="allergen5"> 
                             <span class="check-item"></span>
                             Peanut
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen6" name="allergen" value="Seafood">
+                        <input type="checkbox" class="check-option" id="allergen6" name="allergen" value="seafood">
                         <label class="filter-label" for="allergen6"> 
                             <span class="check-item"></span>
                             Seafood
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen7" name="allergen" value="Sesame">
+                        <input type="checkbox" class="check-option" id="allergen7" name="allergen" value="sesame">
                         <label class="filter-label" for="allergen7"> 
                             <span class="check-item"></span>
                             Sesame
@@ -277,28 +260,28 @@
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen9" name="allergen" value="Soy">
+                        <input type="checkbox" class="check-option" id="allergen9" name="allergen" value="soy">
                         <label class="filter-label" for="allergen9"> 
                             <span class="check-item"></span>
                             Soy
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen10" name="allergen" value="Sulfite">
+                        <input type="checkbox" class="check-option" id="allergen10" name="allergen" value="sulfite">
                         <label class="filter-label" for="allergen10"> 
                             <span class="check-item"></span>
                             Sulfite
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen11" name="allergen" value="Tree Nut">
+                        <input type="checkbox" class="check-option" id="allergen11" name="allergen" value="tree nut">
                         <label class="filter-label" for="allergen11"> 
                             <span class="check-item"></span>
                             Tree Nut
                         </label>
                     </div>
                     <div class="checkbox-input">
-                        <input type="checkbox" class="check-option" id="allergen12" name="allergen" value="Wheat">
+                        <input type="checkbox" class="check-option" id="allergen12" name="allergen" value="wheat">
                         <label class="filter-label" for="allergen12"> 
                             <span class="check-item"></span>
                             Wheat
