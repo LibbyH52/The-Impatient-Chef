@@ -6,7 +6,6 @@ const filterForm = document.querySelector('.search-filters');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
 const recipeContainer = document.querySelector('.recipe-container');
-const randomContainer = document.querySelector('.random-container');
 
 //captures input from html form (filter form)
 const dietType = document.querySelectorAll('input[name="diet-type"]');
@@ -25,8 +24,6 @@ const closeBtn = document.querySelector('.close-btn');
 const formBtn = document.querySelector('.burger-btn');
 const openForm = document.querySelector('.open');
 const closeForm = document.querySelector('.close');
-
-const randomButton = document.querySelector('.random-btn');
 
 //singleRecipe variables
 const recipeOne = document.querySelector('#single-recipe');
@@ -88,8 +85,9 @@ const showRecipe = (recipe) => {
     servingSize.textContent = recipeInfo.servings;
 
     if(recipeInfo.dishTypes > 0) {
-        let dishList = recipeInfo.dishTypes.join(', ');
+        let dishList = recipeInfo.dishTypes.join(' , ');
         recipeDish.textContent = dishList;
+        console.log(dishList);
     } else {
         recipeDish.textContent = 'Not specified.'
     }
@@ -99,13 +97,13 @@ const showRecipe = (recipe) => {
     } else {
         recipeCuisine.textContent = 'Not specified.'
     }
-    if(recipeInfo.diets > 0){
-        let diets = recipeInfo.diets.join(', ');
-        dietInfo.textContent = diets
+    if(recipeInfo.diets.length > 0){
+        let diets = recipeInfo.diets.join(',');
+        dietInfo.textContent = diets;
+        console.log(diets);
     } else {
-        dietInfo.textContent = 'Not available'
+         dietInfo.textContent = 'Not available'
     }
-
     let nutrientInfo = recipeInfo.nutrition.nutrients;
     for (let i=0; i<nutrientInfo.length; i++){
         if(nutrientInfo[i].name === 'Calories' ||nutrientInfo[i].name === 'Carbohydrates' || nutrientInfo[i].name==='Fat' ||nutrientInfo[i].name==='sugar'|| nutrientInfo[i].name==='Protein'||nutrientInfo[i].name==='Fiber' || nutrientInfo[i].name==='salt' ) {
@@ -134,7 +132,8 @@ const showRecipe = (recipe) => {
         ingredientItem.classList.add('list-item');
         ingredientItem.textContent = recipeIngredients[i].original;
         singleRecipeIngredients.appendChild(ingredientItem);
-    } 
+    }
+
     let instructions = recipeInfo.analyzedInstructions[0].steps;
     for(let i=0; i<instructions.length; i++) {
         let instructionItem = document.createElement('li');
@@ -157,42 +156,6 @@ closeBtn.addEventListener("click", () => {
     nutritionInfo.innerHTML = '';
     dietInfo.innerHTML ='';
 });
-
-const showRandom = (data) => {
-    randomList = data.recipes;
-    let randomHeading = document.createElement('h2');
-    randomHeading.classList.add('secondary-heading');
-    randomHeading.textContent = `Today's Recipes`;
-    randomContainer.appendChild(randomHeading);
-    for(let i=0; i<randomList.length; i++){
-        recipeCard = document.createElement('div');
-        recipeCard.classList.add('recipe-card');
-        //three parts of the recipe card
-        let cardHead = document.createElement('div'); 
-        let cardBody = document.createElement('div');
-        //recipe image for the cardHead
-        let randomImage = document.createElement('img');
-        randomImage.classList.add('recipe-img');
-        randomImage.src = randomList[i].image;
-        //recipe name
-        let randomName = document.createElement('h3');
-        randomName.textContent = randomList[i].title;
-        randomName.classList.add('recipe-heading');
-        //classes to the various elements for styling
-        cardHead.classList.add('recipe-head');
-        cardBody.classList.add('recipe-body');
-        //capture the recipe id for displaying a single recipe on click
-        recipeCard.dataset.id = randomList[i].id;
-        //appending relevant to parent elements
-        randomContainer.appendChild(recipeCard);
-        recipeCard.appendChild(cardHead);
-        recipeCard.appendChild(cardBody);
-        cardBody.appendChild(randomName);
-        cardHead.appendChild(randomImage);
-    }
-    console.log(randomList);
-    getID(id);
-}
 
 const displayRecipes = (data) => {
     recipeContainer.innerHTML = '';
@@ -254,7 +217,6 @@ const getID = (id) => {
             id = recipeCard.dataset.id;
             recipeOne.classList.remove('hide');
             recipeContainer.classList.add('hide');
-            randomContainer.classList.add('hide');
             singleRecipe(id)
                 .then(recipe => showRecipe(recipe))
                 .catch(err => console.log(err));
@@ -276,69 +238,59 @@ const showRandomRecipes = async () => {
     return { randomList: randomList }
 }
 
-const allRecipes = async (recipeName) => {
+const allRecipes = async (recipeName,diet,meal,cuisine,ingredients) => {
     //calling api function in here
-    //, diet, meal, cuisine, ingredients
-    //, diet, meal, cuisine,ingredients
-    const recipeList = await getRecipes(recipeName);
+    const recipeList = await getRecipes(recipeName,diet,meal,cuisine,ingredients);
     return { recipeList: recipeList }
 }
 
-// addBtn.addEventListener("click", () => {
-//     if(ingredient.value !== '' & ingredients.length < 3){
-//         ingredients.push(ingredient.value.trim());
-//         badge = document.createElement('div');
-//         let undo = document.createElement('button');
-//         undo.classList.add('delete');
-//         undo.setAttribute("type", "button");
-//         undo.textContent = 'X'
-//         ingredientList.appendChild(badge);
-//         badge.classList.add('ingredient-badge');
-//         badge.textContent = `${ingredient.value}`;
-//         badge.appendChild(undo);
-//         ingredient.value = '';
-//     }
-// });
 
-// filterForm.addEventListener("submit", e => {
-//     e.preventDefault();
-//     let diet = '';
-//     let meal = '';
-//     let cuisine = '';
-//     let ingredientStr = '';
-//     ingredientList.innerHTML = '';
+filterForm.addEventListener("submit", e => {
+    e.preventDefault();
+    recipeContainer.classList.remove('hide');
+    let diet = '';
+    let meal = '';
+    let cuisine = '';
+    let ingredientStr = '';
+    ingredientList.innerHTML = '';
 
-//     if(ingredients.length > 1) {
-//         ingredientStr = ingredients.join(',');
-//     }
+    if(ingredients.length > 1) {
+        ingredientStr = ingredients.join(',');
+    }
 
-//     for(let i=0; i<allergenList.length; i++) {
-//         if(allergenList[i].checked) {
-//             allergens.push(allergenList[i].value);
-//         }
-//     }
-//     allergen = allergens.join(',');
+    for(let i=0; i<allergenList.length; i++) {
+        if(allergenList[i].checked) {
+            allergens.push(allergenList[i].value);
+        }
+    }
+    allergen = allergens.join(',');
 
-//     for(let i=0; i<dietType.length; i++) {
-//         if(dietType[i].checked) {
-//             diet = dietType[i].value;
-//         }
-//     }
+    for(let i=0; i<dietType.length; i++) {
+        if(dietType[i].checked) {
+            diet = dietType[i].value;
+        }
+        console.log(diet);
+    }
 
-//     // for(let i=0; i<mealType.length; i++) {
-//     //     if(mealType[i].checked) {
-//     //         meal = mealType[i].value;
-//     //     }
-//     // }
+    for(let i=0; i<mealType.length; i++) {
+        if(mealType[i].checked) {
+            meal = mealType[i].value;
+        }
+    }
 
-//     for(let i=0; i<cuisineType.length; i++) {
-//         if(cuisineType[i].checked) {
-//             cuisines.push(cuisineType[i].value);
-//         }
-//     }
-//     cuisine = cuisines.join(',');
+    for(let i=0; i<cuisineType.length; i++) {
+        if(cuisineType[i].checked) {
+            cuisines.push(cuisineType[i].value);
+        }
+    }
+    cuisine = cuisines.join(',');
 
-//     filterForm.reset();
+    filterForm.reset();
+
+    allRecipes(recipeName,diet,cuisine,allergens,meal)
+        .then(data => displayRecipes(data))
+        .catch(err => console.log(err));
+});
 
 //capture recipeName from user and send request to API
 nameForm.addEventListener('submit', e => {
@@ -368,4 +320,4 @@ nameForm.addEventListener('submit', e => {
 //         badge.appendChild(undo);
 //         ingredient.value = '';
 //     }
-// });
+//});
