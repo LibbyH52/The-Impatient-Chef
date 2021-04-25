@@ -1,7 +1,6 @@
 const ingredientForm = document.querySelector('.ingredient-form');
 
 //forms and form buttons
-const nameForm = document.querySelector('.name-form');
 const filterForm = document.querySelector('.search-filters');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
@@ -22,7 +21,7 @@ const ingredientList = document.querySelector('#ingredient-list');
 // const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
 const formBtn = document.querySelector('.burger-btn');
-const openForm = document.querySelector('.open');
+const filterHeading = document.querySelector('.filter-heading');
 const closeForm = document.querySelector('.close');
 
 //singleRecipe variables
@@ -44,22 +43,41 @@ let ingredients = [];
 let badge = '';
 let id = 0;
 let recipeName = '';
+let meal = '';
 
 //arrays for pushing allergen & cuisine selection
 let allergens = [];
 let cuisines = [];
+let ingredientStr = '';
+
+
+//function to get time of day for recipe display on load
+// const date = new Date();
+// const time = date.getHours();
+
+// if(time >= 6 && time < 11) {
+//     meal = "Breakfast"
+// } else if(time >= 11 && time <= 14){
+//     meal = "lunch";
+// }  else if(time > 16 && time <= 19){
+//     meal = "dinner";
+// } else if(time >= 22){
+//     meal = "Midnight Snack?";
+// } else {
+//     meal = "Light bites";
+// }
+
+console.log(`The current time is ${meal}`);
 
 
 //open/ close filter form on smaller screens
-openForm.addEventListener('click', () => {
+filterHeading.addEventListener('click', () => {
     filterForm.style.display = 'flex';
     closeForm.classList.remove('hide');
-    openForm.classList.add('hide');
 });
 
 closeForm.addEventListener('click', () => {
     filterForm.style.display = 'none';
-    openForm.classList.remove('hide');
     closeForm.classList.add('hide');
 });
 
@@ -98,9 +116,9 @@ const showRecipe = (recipe) => {
         recipeCuisine.textContent = 'Not specified.'
     }
     if(recipeInfo.diets.length > 0){
-        let diets = recipeInfo.diets.join(',');
-        dietInfo.textContent = diets;
-        console.log(diets);
+        diet = recipeInfo.diets.join(',');
+        dietInfo.textContent = diet;
+        console.log(diet);
     } else {
          dietInfo.textContent = 'Not available'
     }
@@ -146,7 +164,6 @@ const showRecipe = (recipe) => {
 closeBtn.addEventListener("click", () => {
     recipeOne.classList.add("hide");
     recipeContainer.classList.remove("hide");
-    randomContainer.classList.remove("hide");
     singleImg.innerHTML = '';
     recipeHeading.innerHTML = '';
     recipeAuthor.innerHTML = '';
@@ -162,8 +179,6 @@ const displayRecipes = (data) => {
     let resultsHeading = document.createElement('h2');
     recipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1);
     resultsHeading.classList.add('secondary-heading');
-    resultsHeading.textContent =`${recipeName} Recipes`
-    recipeContainer.appendChild(resultsHeading);
     recipeList = data.recipeList.results;
     for(let i=0; i<recipeList.length; i++){
         recipeCard = document.createElement('div');
@@ -226,19 +241,14 @@ const getID = (id) => {
 }
 
 //get random recipes on page load
-document.addEventListener('DOMContentLoaded', () => {
-    randomRecipes()
-        .then(data => showRandom(data))
-        .catch(err => console.log(err));
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//      allRecipes(meal)
+//          .then(data => displayRecipes(data))
+//          .catch(err => console.log(err));
+// });
 
-const showRandomRecipes = async () => {
-    //calling api function in here
-    const randomList = await randomRecipes();
-    return { randomList: randomList }
-}
 
-const allRecipes = async (recipeName,diet,meal,cuisine,ingredients) => {
+const allRecipes = async (recipeName,diet,meal,cuisine,ingredientStr) => {
     //calling api function in here
     const recipeList = await getRecipes(recipeName,diet,meal,cuisine,ingredients);
     return { recipeList: recipeList }
@@ -248,28 +258,23 @@ const allRecipes = async (recipeName,diet,meal,cuisine,ingredients) => {
 filterForm.addEventListener("submit", e => {
     e.preventDefault();
     recipeContainer.classList.remove('hide');
-    let diet = '';
+    let dietType = '';
     let meal = '';
     let cuisine = '';
-    let ingredientStr = '';
-    ingredientList.innerHTML = '';
+    let allergen = '';
 
-    if(ingredients.length > 1) {
-        ingredientStr = ingredients.join(',');
-    }
+    recipeName = document.querySelector('#name').value.trim();
 
     for(let i=0; i<allergenList.length; i++) {
         if(allergenList[i].checked) {
             allergens.push(allergenList[i].value);
         }
     }
-    allergen = allergens.join(',');
 
     for(let i=0; i<dietType.length; i++) {
         if(dietType[i].checked) {
-            diet = dietType[i].value;
+            dietType = dietType[i].value;
         }
-        console.log(diet);
     }
 
     for(let i=0; i<mealType.length; i++) {
@@ -277,47 +282,21 @@ filterForm.addEventListener("submit", e => {
             meal = mealType[i].value;
         }
     }
-
+    console.log(meal);
     for(let i=0; i<cuisineType.length; i++) {
         if(cuisineType[i].checked) {
             cuisines.push(cuisineType[i].value);
         }
     }
     cuisine = cuisines.join(',');
+    allergen = allergens.join(',');
+    console.log(cuisine);
+    console.log(allergen);
 
     filterForm.reset();
 
-    allRecipes(recipeName,diet,cuisine,allergens,meal)
+    allRecipes(recipeName,dietType,cuisine,allergen,meal)
         .then(data => displayRecipes(data))
         .catch(err => console.log(err));
 });
 
-//capture recipeName from user and send request to API
-nameForm.addEventListener('submit', e => {
-    e.preventDefault();
-    //get the recipe name from the user
-    recipeName = document.querySelector('#recipe-search').value.trim();
-    console.log(recipeName);
-    recipeContainer.classList.remove('hide');
-    nameForm.reset();
-    allRecipes(recipeName)
-        .then(data => displayRecipes(data))
-        .catch(err => console.log(err));
-})
-
-
-// addBtn.addEventListener("click", () => {
-//     if(ingredient.value !== '' & ingredients.length < 3){
-//         ingredients.push(ingredient.value.trim());
-//         badge = document.createElement('div');
-//         let undo = document.createElement('button');
-//         undo.classList.add('delete');
-//         undo.setAttribute("type", "button");
-//         undo.textContent = 'X'
-//         ingredientList.appendChild(badge);
-//         badge.classList.add('ingredient-badge');
-//         badge.textContent = `${ingredient.value}`;
-//         badge.appendChild(undo);
-//         ingredient.value = '';
-//     }
-//});
