@@ -20,7 +20,6 @@ const ingredientList = document.querySelector('#ingredient-list');
 
 // const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
-const formBtn = document.querySelector('.burger-btn');
 const filterHeading = document.querySelector('.filter-heading');
 const closeForm = document.querySelector('.close');
 
