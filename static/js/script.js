@@ -239,14 +239,6 @@ const getID = (id) => {
     console.log(id);
 }
 
-//get random recipes on page load
-// document.addEventListener('DOMContentLoaded', () => {
-//      allRecipes(meal)
-//          .then(data => displayRecipes(data))
-//          .catch(err => console.log(err));
-// });
-
-
 const allRecipes = async (recipeName,diet,meal,cuisine,ingredientStr) => {
     //calling api function in here
     const recipeList = await getRecipes(recipeName,diet,meal,cuisine,ingredients);
