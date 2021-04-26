@@ -358,7 +358,7 @@ input#recipe-search{
     border-radius: 50%;
     height: 2.25rem;
     width: 2.25rem;
-    border: 5px solid #f4f4f4;
+    border: 7px solid #f4f4f4;
     background: transparent;
     display: inline-block;
     content: "";
@@ -383,7 +383,7 @@ input#recipe-search{
     display: block;
     height: 2.25rem;
     width: 2.25rem;
-    border: 5px solid #f4f4f4;
+    border: 7px solid #f4f4f4;
     background: transparent;
     position: absolute;
     content: '';
