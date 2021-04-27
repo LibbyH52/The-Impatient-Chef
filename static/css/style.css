@@ -748,7 +748,7 @@ hr{
     }
 
     .recipe-container{
-        grid-column: 2/10;
+        grid-column: 2/9;
     }
 
     .single-details,
@@ -795,7 +795,7 @@ hr{
     }
 
     .recipe-container{
-        grid-column: 1/-1;
+        grid-column: 2/10;
     }
 
     .details{
@@ -827,7 +827,7 @@ hr{
     }
 
     .recipe-container{
-        grid-column: 1/-1;
+        grid-column: 2/10;
         grid-template-columns: repeat(2, 1fr);
         margin: 0 auto;
     }
@@ -957,8 +957,6 @@ hr{
     .recipe-container{
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(7, min-content);
-        grid-gap: 1rem;
-        grid-column: 3/-1;
     }
 } 
 
@@ -985,10 +983,7 @@ hr{
     }
     
     .recipe-container{
-        grid-column: 4/-1;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(6, min-content);
-        grid-gap: .1rem;
     }
 
     .add-btn{
@@ -1060,7 +1055,7 @@ hr{
     }
 
     .recipe-container{
-        grid-column: 4/10;
+        grid-template-columns: repeat(3, 1fr);
     } 
 
     .single-container{
@@ -1168,7 +1163,6 @@ hr{
     }
 
     .recipe-container{
-        grid-column: 4/-1;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, min-content);
         grid-gap: 1rem;
@@ -1214,7 +1208,6 @@ hr{
     }
 
     .recipe-container{
-        grid-column: 3/-1;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, min-content);
         grid-gap: 1rem;
