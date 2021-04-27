@@ -30,7 +30,6 @@ const instructionList = document.querySelector('.instruction-list');
 
 // let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
-let badge = '';
 let id = 0;
 let recipeName = '';
 let meal = '';
@@ -112,7 +111,7 @@ const showRecipe = (recipe) => {
     }
     let nutrientInfo = recipeInfo.nutrition.nutrients;
     for (let i=0; i<nutrientInfo.length; i++){
-        if(nutrientInfo[i].name === 'Calories' ||nutrientInfo[i].name === 'Carbohydrates' || nutrientInfo[i].name==='Fat' ||nutrientInfo[i].name==='sugar'|| nutrientInfo[i].name==='Protein'||nutrientInfo[i].name==='Fiber' || nutrientInfo[i].name==='salt' ) {
+        if(nutrientInfo[i].name === 'Calories' ||nutrientInfo[i].name === 'Carbohydrates' || nutrientInfo[i].name==='Fat' || nutrientInfo[i].name==='Protein'||nutrientInfo[i].name==='Fiber' ) {
             if(nutrientInfo[i].name === 'Carbohydrates'){
                 nutrientInfo[i].name = 'Carbs'
             }
