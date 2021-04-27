@@ -1,8 +1,5 @@
-const ingredientForm = document.querySelector('.ingredient-form');
-
 //forms and form buttons
 const filterForm = document.querySelector('.search-filters');
-const filterBtns = document.querySelectorAll('.filter-btn');
 
 const recipeContainer = document.querySelector('.recipe-container');
 
@@ -11,17 +8,12 @@ const dietType = document.querySelectorAll('input[name="diet-type"]');
 const mealType = document.querySelectorAll('input[name="meal-type"]');
 const cuisineType = document.querySelectorAll('input[name="cuisine"]');
 const allergenList = document.querySelectorAll('input[name="allergen"]');
-const ingredient = document.querySelector('input[name="ingredient"]');
-
-const addBtn = document.querySelector('.add-btn');
-
-const ingredientList = document.querySelector('#ingredient-list');
-
 
 // const recipeModal = document.querySelector('.recipe-modal');
 const closeBtn = document.querySelector('.close-btn');
 const filterHeading = document.querySelector('.filter-heading');
 const closeForm = document.querySelector('.close');
+const about = document.querySelector('.about-container');
 
 //singleRecipe variables
 const recipeOne = document.querySelector('#single-recipe');
@@ -38,7 +30,6 @@ const instructionList = document.querySelector('.instruction-list');
 
 // let recipeCards = recipeContainer.childNodes;
 let recipeList = [];
-let ingredients = [];
 let badge = '';
 let id = 0;
 let recipeName = '';
@@ -47,8 +38,6 @@ let meal = '';
 //arrays for pushing allergen & cuisine selection
 let allergens = [];
 let cuisines = [];
-let ingredientStr = '';
-
 
 //function to get time of day for recipe display on load
 // const date = new Date();
@@ -239,15 +228,16 @@ const getID = (id) => {
     console.log(id);
 }
 
-const allRecipes = async (recipeName,diet,meal,cuisine,ingredientStr) => {
+const allRecipes = async (recipeName,diet,meal,cuisine) => {
     //calling api function in here
-    const recipeList = await getRecipes(recipeName,diet,meal,cuisine,ingredients);
+    const recipeList = await getRecipes(recipeName,diet,meal,cuisine);
     return { recipeList: recipeList }
 }
 
 
 filterForm.addEventListener("submit", e => {
     e.preventDefault();
+    about.classList.add('hide');
     recipeContainer.classList.remove('hide');
     let dietType = '';
     let meal = '';
@@ -273,7 +263,7 @@ filterForm.addEventListener("submit", e => {
             meal = mealType[i].value;
         }
     }
-    console.log(meal);
+
     for(let i=0; i<cuisineType.length; i++) {
         if(cuisineType[i].checked) {
             cuisines.push(cuisineType[i].value);
@@ -281,11 +271,10 @@ filterForm.addEventListener("submit", e => {
     }
     cuisine = cuisines.join(',');
     allergen = allergens.join(',');
-    console.log(cuisine);
-    console.log(allergen);
+
 
     filterForm.reset();
-
+    filterForm.style.display = 'none';
     allRecipes(recipeName,dietType,cuisine,allergen,meal)
         .then(data => displayRecipes(data))
         .catch(err => console.log(err));
