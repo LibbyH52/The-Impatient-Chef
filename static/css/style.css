@@ -125,7 +125,6 @@ input#recipe-search{
     display: grid;
     grid-template-rows: 5rem 20vh repeat(2, min-content);
     grid-template-columns: repeat(10, 1fr);
-    height: 100vh;
 } 
 
 .recipe-container{
@@ -451,6 +450,8 @@ input#recipe-search{
     grid-template-columns: repeat(10, 1fr);
     padding: 1rem 0;
     grid-column: 1/-1;
+    background: rgb(244, 244, 244, 0.8);
+    margin-bottom: 2rem;
 }
 
 .single-header {
@@ -463,7 +464,7 @@ input#recipe-search{
 
 .single-heading {
     font-variant: small-caps;
-    text-align: left;
+    text-align: center;
     width: 100%;
     padding-bottom: 1rem; 
     grid-column: 2/10;
@@ -483,7 +484,7 @@ input#recipe-search{
 .single-title {
     display: block;
     letter-spacing: 1px;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-variant: small-caps;
     font-weight: 700;
     color: #08182b;
@@ -512,16 +513,16 @@ input#recipe-search{
 
 .close-btn{
     border: 2px solid #08182b;
-    font-size: 1rem;
     color: #08182b;
-    font-weight: bold;
     cursor: pointer;
-    padding-right: .5rem;
     border-radius: 5px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 1rem;
     transition: box-shadow .5s ease-in-out;
-    height: 2.5rem;
     margin-left: auto;
-    grid-column: 6/-1;
+    margin-right: 1rem;
+    grid-column: 4/-1;
 }
 
 .single-details {
@@ -534,24 +535,23 @@ input#recipe-search{
     display: flex;
     align-content: center;
     flex-wrap: wrap;
+    font-size: 1.75rem;
     width: 100%;
 }
 
 .ready-in, 
 .servings {
-    font-size: 1.25rem;
     padding: .5rem 1rem;
     flex: 0 0 70%;
 }
 
-.icon,
+.single-icon,
 .text {
-    font-size: 1.4rem;
     padding-right: .25rem;
     color: #08182b;
 }
 
-.icon{
+.single-icon{
     display: inline-block;
     width: 1.5rem;
 }
@@ -565,12 +565,6 @@ input#recipe-search{
 .diet-info {
     padding: .5rem;
     margin: .5rem;
-}
-
-.meal-list,
-.cuisine-list,
-.diet-list {
-    font-size: 1.5rem;
 }
 
 .recipe-info{
@@ -626,13 +620,12 @@ input#recipe-search{
     display: grid;
     grid-template-columns: repeat(6, 2fr);
     grid-template-rows: repeat(2, min-content);
-    padding: 0 .5rem;
+    padding-right: .75rem;
 }
 
 .ingredient-details,
 .instruction-details {
     grid-column: 1/-1;
-    background: #f4f4f4;
     padding: .5rem;
 }
 
@@ -692,7 +685,7 @@ input#recipe-search{
     text-align: center;
 }
 
-.icon {
+.footer-paragraph>span.icon {
     padding: 1.5rem;
 }
 
@@ -832,18 +825,6 @@ hr{
         margin: 0 auto;
     }
 
-    .single-container{
-        margin: 0 auto;
-        grid-column: 1/10;
-    }
-
-    .close-btn{
-        grid-column: 6/-1;
-        font-size: 1.5rem;
-        height: 3rem;
-        padding: 1rem inherit;
-    }
-
     .single-heading{
         margin-bottom: 1rem;
     }
@@ -868,6 +849,11 @@ hr{
     .servings{
         flex: 0 0 40%;
         text-align: right;
+    }
+
+    .meal-type,
+    .cuisine {
+        flex: 0 0 100%;
     }
 }
 
@@ -905,13 +891,10 @@ hr{
         font-size: 2.25rem;
     }
 
-    .recipe-container{
+    .recipe-container,
+    .single-container{
         grid-column: 2/10;
     }
-
-    /* .single-container{
-        grid-column: 2/-1;
-    } */
 
     .single-details{
         grid-column: 2/10;
@@ -994,6 +977,10 @@ hr{
         flex: 0 0 75%;
     }
 
+    .single-container{
+        grid-column: 1/-1;
+    }
+
     .single-details{
         grid-column: 1/6;
         grid-row: 1/1;
@@ -1004,6 +991,7 @@ hr{
     }
 
     .nutrient-info{
+        justify-content: flex-start;
         width: 80%;
         margin: 0;
     }  
@@ -1023,6 +1011,7 @@ hr{
 
     .details{
         grid-column: 1/-1;
+        padding: 0 1rem;
     }
 
     .ingredient-details{
@@ -1059,7 +1048,7 @@ hr{
     } 
 
     .single-container{
-       grid-column: 1/-1;
+       grid-column: 2/10;
     }
 
     .close-btn{
@@ -1100,16 +1089,16 @@ hr{
     }
 
     .ready-in{
-        flex: 0 0 50%;
+        flex: 0 0 60%;
     }
 
     .servings{
-        flex: 0 0 40%;
+        flex: 0 0 35%;
     }
 
     .nutrient-info{
         padding: 0 .5rem;
-        width: 80%;
+        width: 90%;
         margin: 0;
     }
 
@@ -1172,10 +1161,6 @@ hr{
         font-size: 4rem;
     }
 
-   .single-container{
-        grid-column: 1/9;
-    }
-
     .single-details{
         grid-column: 1/7;
     }
@@ -1211,9 +1196,5 @@ hr{
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, min-content);
         grid-gap: 1rem;
-    }
-
-    .single-container{
-        grid-column: 3/9;
     }
 }
