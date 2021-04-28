@@ -459,7 +459,7 @@ input#recipe-search{
     display: grid;
     grid-template-rows: repeat(2, min-content);
     grid-template-columns: repeat(10, 1fr);
-    padding: 3rem 0;
+    padding: 3rem 1rem;
 }
 
 .single-heading {
@@ -643,10 +643,10 @@ input#recipe-search{
 }
 
 .list-item{
-    font-size: 1.5rem; 
-    padding: .25rem; 
+    font-size: 1.75rem; 
+    padding: .5rem .25rem; 
     color: #08182b; 
-    margin: .25rem auto;
+    margin: .5rem auto;
 }
 
 .ingredient-list .list-item{
@@ -974,7 +974,7 @@ hr{
     }
 
     .filter-btn{
-        flex: 0 0 75%;
+        flex: 0 0 30%;
     }
 
     .single-container{
@@ -1134,17 +1134,17 @@ hr{
     }
 
     .list-item{
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
 } 
 
 @media screen and (min-width: 1000px) {
     .filter-btn{
-        width: 30%;
+        flex: 0 0 35%;
     }
 
     .filter-group{
-        flex: 0 0 30%;
+        flex: 0 0 25%;
     }
 
     .about-container{
@@ -1188,7 +1188,7 @@ hr{
 }
 
 @media screen and (min-width: 1200px) {
-    .filter-group{
+    .filter-btn {
         flex: 0 0 25%;
     }
 
