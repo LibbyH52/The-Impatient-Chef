@@ -47,7 +47,6 @@ closeForm.addEventListener('click', () => {
 
 const showRecipe = (recipe) => {
     let recipeInfo = recipe.oneRecipe;
-    console.log(recipeInfo);
 
     let recipeImage = document.createElement('img');
     recipeImage.setAttribute("alt", `picture of ${recipeInfo.title}`);
@@ -69,7 +68,6 @@ const showRecipe = (recipe) => {
     if(recipeInfo.dishTypes > 0) {
         let dishList = recipeInfo.dishTypes.join(' , ');
         recipeDish.textContent = dishList;
-        console.log(dishList);
     } else {
         recipeDish.textContent = 'Not specified.'
     }
@@ -82,7 +80,6 @@ const showRecipe = (recipe) => {
     if(recipeInfo.diets.length > 0){
         diet = recipeInfo.diets.join(',');
         dietInfo.textContent = diet;
-        console.log(diet);
     } else {
          dietInfo.textContent = 'Not available'
     }
@@ -107,9 +104,7 @@ const showRecipe = (recipe) => {
     }
 
     let recipeIngredients = recipeInfo.extendedIngredients;
-    console.log('Ingredients');
     for(let i=0; i<recipeIngredients.length; i++) {
-        console.log(recipeIngredients[i].original);
         let ingredientItem = document.createElement('li');
         ingredientItem.classList.add('list-item');
         ingredientItem.textContent = recipeIngredients[i].original;
@@ -177,7 +172,6 @@ const displayRecipes = (data) => {
         recipeCard.appendChild(cardBody);
         cardBody.appendChild(name);
     }
-    console.log(recipeList);
     getID(id);
 }
 
@@ -201,7 +195,6 @@ const getID = (id) => {
                 .catch(err => console.log(err));
         });
     });
-    console.log(id);
 }
 
 const allRecipes = async (recipeName,diet,meal,cuisine) => {
@@ -237,7 +230,6 @@ filterForm.addEventListener("submit", e => {
         if(dietType[i].checked) {
             diet = dietType[i].value;
         }
-        console.log(diet)
     }
 
     for(let i=0; i<mealType.length; i++) {
@@ -257,7 +249,7 @@ filterForm.addEventListener("submit", e => {
 
     filterForm.reset();
     filterForm.style.display = 'none';
-    console.log(recipeName,diet,meal,cuisine,allergen);
+
     allRecipes(recipeName,diet,meal,cuisine,allergen)
         .then(data => displayRecipes(data))
         .catch(err => console.log(err));
