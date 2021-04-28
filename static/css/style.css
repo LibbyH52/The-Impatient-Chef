@@ -168,21 +168,22 @@ input#recipe-search{
 .recipe-body {
     display: flex;
     align-items: center;
-    background:rgba(69, 217, 253,0.4);
-    padding: 0;
+    background: rgba(238, 37, 96, .8);
+    padding: 0 .5rem;
     height: 6rem;
     padding: 1rem 0;
     box-sizing: border-box;
 }
 
 .recipe-heading{
-    color: #08182b;
-    font-size: 1.5rem;
+    color: #f4f4f4;
+    font-size: 1.75rem;
     margin: 0 auto;
     text-align: center;
     font-variant: small-caps;
-    font-weight: 600;
-    line-height: 1.5rem;
+    font-weight: 800;
+    line-height: 2rem;
+    padding: 0 .5rem;
 }
 
 .single-img{
