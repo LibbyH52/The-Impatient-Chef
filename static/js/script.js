@@ -34,29 +34,6 @@ let id = 0;
 let recipeName = '';
 let meal = '';
 
-//arrays for pushing allergen & cuisine selection
-let allergens = [];
-let cuisines = [];
-
-//function to get time of day for recipe display on load
-// const date = new Date();
-// const time = date.getHours();
-
-// if(time >= 6 && time < 11) {
-//     meal = "Breakfast"
-// } else if(time >= 11 && time <= 14){
-//     meal = "lunch";
-// }  else if(time > 16 && time <= 19){
-//     meal = "dinner";
-// } else if(time >= 22){
-//     meal = "Midnight Snack?";
-// } else {
-//     meal = "Light bites";
-// }
-
-console.log(`The current time is ${meal}`);
-
-
 //open/ close filter form on smaller screens
 filterHeading.addEventListener('click', () => {
     filterForm.style.display = 'flex';
@@ -237,11 +214,16 @@ const allRecipes = async (recipeName,diet,meal,cuisine) => {
 filterForm.addEventListener("submit", e => {
     e.preventDefault();
     about.classList.add('hide');
+    closeForm.classList.add('hide');
     recipeContainer.classList.remove('hide');
-    let dietType = '';
+    let diet = '';
     let meal = '';
     let cuisine = '';
     let allergen = '';
+    //arrays for pushing allergen & cuisine selection
+    let allergens = [];
+    let cuisines = [];
+
 
     recipeName = document.querySelector('#name').value.trim();
 
@@ -253,8 +235,9 @@ filterForm.addEventListener("submit", e => {
 
     for(let i=0; i<dietType.length; i++) {
         if(dietType[i].checked) {
-            dietType = dietType[i].value;
+            diet = dietType[i].value;
         }
+        console.log(diet)
     }
 
     for(let i=0; i<mealType.length; i++) {
@@ -274,7 +257,8 @@ filterForm.addEventListener("submit", e => {
 
     filterForm.reset();
     filterForm.style.display = 'none';
-    allRecipes(recipeName,dietType,cuisine,allergen,meal)
+    console.log(recipeName,diet,meal,cuisine,allergen);
+    allRecipes(recipeName,diet,meal,cuisine,allergen)
         .then(data => displayRecipes(data))
         .catch(err => console.log(err));
 });
