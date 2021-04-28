@@ -10,7 +10,7 @@ const cuisineType = document.querySelectorAll('input[name="cuisine"]');
 const allergenList = document.querySelectorAll('input[name="allergen"]');
 
 // const recipeModal = document.querySelector('.recipe-modal');
-const closeBtn = document.querySelector('.close-btn');
+const backBtn = document.querySelector('.back-btn');
 const filterHeading = document.querySelector('.filter-heading');
 const closeForm = document.querySelector('.close');
 const about = document.querySelector('.about-container');
@@ -120,7 +120,7 @@ const showRecipe = (recipe) => {
     }
 }
 
-closeBtn.addEventListener("click", () => {
+backBtn.addEventListener("click", () => {
     recipeOne.classList.add("hide");
     recipeContainer.classList.remove("hide");
     singleImg.innerHTML = '';

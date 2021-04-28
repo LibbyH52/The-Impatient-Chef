@@ -511,7 +511,7 @@ input#recipe-search{
     transform: scaleY(1.05);
 }
 
-.close-btn{
+.back-btn{
     border: 2px solid #08182b;
     color: #08182b;
     cursor: pointer;
@@ -1051,7 +1051,7 @@ hr{
        grid-column: 2/10;
     }
 
-    .close-btn{
+    .back-btn{
         grid-column: 8/-1;
     }
 
