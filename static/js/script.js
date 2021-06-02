@@ -197,9 +197,9 @@ const getID = (id) => {
     });
 }
 
-const allRecipes = async (recipeName,diet,meal,cuisine) => {
+const allRecipes = async (recipeName,diet,meal,cuisine,allergen) => {
     //calling api function in here
-    const recipeList = await getRecipes(recipeName,diet,meal,cuisine);
+    const recipeList = await getRecipes(recipeName,diet,meal,cuisine,allergen);
     return { recipeList: recipeList }
 }
 

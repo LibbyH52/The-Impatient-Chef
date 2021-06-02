@@ -1,19 +1,11 @@
-const apiKey = "7dccf009d1d3499ab7f9fa0b154fdc3d";
+const apiKey = API_Key;
 
 
-
-const randomRecipes = async() => {
-    const url = `https://api.spoonacular.com/recipes/random`;
-    const query = `?apiKey=${apiKey}&limitLicense=true&maxReadyTime=59&number=12&sortDirection='desc`;
-    const response = await fetch(url+query);
-    const data = await response.json();
-
-    return data;
-}
-
-const getRecipes = async (recipeName) => {
+const getRecipes = async (recipeName,diet,meal,cuisine,allergen) => {
+    console.log(`diet = ${diet} meal= ${meal} cuisine=${cuisine} allergen= ${allergen}`)
     const url = "https://api.spoonacular.com/recipes/complexSearch";
-    const query = `?apiKey=${apiKey}&query=${recipeName}&limitLicense=true&maxReadyTime=59&number=12&sortDirection='desc'`;
+    const query = `?apiKey=${apiKey}&query=${recipeName}&diet=${diet}&type=${meal}&cuisine=${cuisine}&${allergen}&limitLicense=true&maxReadyTime=59&number=12&sortDirection='desc'`;
+    console.log(url+query);
     const response = await fetch(url+query);
     const data = await response.json();
 

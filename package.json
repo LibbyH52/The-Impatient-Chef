@@ -1,0 +1,30 @@
+{
+  "name": "the_impatient_chef",
+  "version": "1.0.0",
+  "description": "recipe finder",
+  "main": "index.js",
+  "dependencies": {
+    "babel-loader": "^8.2.2",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^7.0.2",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LibbyH52/The-Impatient-Chef.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LibbyH52/The-Impatient-Chef/issues"
+  },
+  "homepage": "https://github.com/LibbyH52/The-Impatient-Chef#readme"
+}
