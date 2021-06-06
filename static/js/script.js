@@ -197,13 +197,14 @@ const getID = (id) => {
     });
 }
 
+//function to call getRecipes() and with relevant filters as arguments
 const allRecipes = async (recipeName,diet,meal,cuisine,allergen) => {
-    //calling api function in here
     const recipeList = await getRecipes(recipeName,diet,meal,cuisine,allergen);
     return { recipeList: recipeList }
 }
 
-
+/*allows the user to search by name or main ingredient, and also to filter the recipe by meal type, 
+cuisine type, special diet and to exclude any allergens*/
 filterForm.addEventListener("submit", e => {
     e.preventDefault();
     about.classList.add('hide');
@@ -248,8 +249,11 @@ filterForm.addEventListener("submit", e => {
 
 
     filterForm.reset();
+
+    //hide the form once it has been submitted
     filterForm.style.display = 'none';
 
+    //calling the allRecipes function and updating the UI with the relevant data
     allRecipes(recipeName,diet,meal,cuisine,allergen)
         .then(data => displayRecipes(data))
         .catch(err => console.log(err));
